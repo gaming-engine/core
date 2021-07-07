@@ -1,0 +1,36 @@
+{
+  "name": "gaming-engine-core",
+  "version": "1.0.0",
+  "description": "Core functionality for the Gaming Engine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/game-engine/core.git"
+  },
+  "keywords": [
+    "gaming-engine"
+  ],
+  "author": "Andrew Judd",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/game-engine/core/issues"
+  },
+  "homepage": "https://github.com/game-engine/core#readme",
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-vue": "^7.12.1",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0",
+    "prettier": "^2.3.2"
+  },
+  "dependencies": {
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4"
+  }
+}
