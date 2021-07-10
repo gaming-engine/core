@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Facade;
 
 /**
  * @see \GamingEngine\Core\Core
+ * @codeCoverageIgnore
  */
 class CoreFacade extends Facade
 {
