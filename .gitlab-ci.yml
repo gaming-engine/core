@@ -30,29 +30,11 @@ before_script:
   # comment this out if you don't have a node dependency
   - npm install
 
-  # Copy over testing configuration.
-  # Don't forget to set the database config in .env.testing correctly
-  # DB_HOST=mysql
-  # DB_DATABASE=project_name
-  # DB_USERNAME=root
-  # DB_PASSWORD=secret
-  #- cp .env.testing .env
-
   # Run npm build
   # comment this out if you don't have a frontend build
   # you can change this to do your frontend building script like
   # npm run build
   #- npm run dev
-
-  # Generate an application key. Re-cache.
-  #- php artisan key:generate
-  #- php artisan config:cache
-
-  # Run database migrations.
-  #- php artisan migrate
-
-  # Run database seed
-  #- php artisan db:seed
 
 format:
   script:
@@ -63,4 +45,4 @@ test:
   script:
     # run laravel tests
     - XDEBUG_MODE=coverage php vendor/bin/phpunit --coverage-text --colors=never
-    - php coverage-checker.php build/clover.xml 60
+    - php coverage-checker.php build/clover.xml 80
