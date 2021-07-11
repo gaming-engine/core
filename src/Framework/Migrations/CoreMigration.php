@@ -1,6 +1,6 @@
 <?php
 
-namespace GamingEngine\Core\Migrations;
+namespace GamingEngine\Core\Framework\Migrations;
 
 use GamingEngine\Core\Core;
 

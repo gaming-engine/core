@@ -1,16 +1,14 @@
 <?php
 
-namespace GamingEngine\Core\Tests\Feature\Listeners\Migrations;
+namespace GamingEngine\Core\Tests\Feature\Framework\Listeners\Migrations;
 
-use GamingEngine\Core\Listeners\Migrations\LogPackageMigration;
-use GamingEngine\Core\Migrations\CoreMigration;
-use GamingEngine\Core\Migrations\IGamingEngineMigration;
+use GamingEngine\Core\Framework\Listeners\Migrations\LogPackageMigration;
+use GamingEngine\Core\Framework\Migrations\CoreMigration;
+use GamingEngine\Core\Framework\Models\FrameworkMigration;
 use GamingEngine\Core\Tests\TestCase;
 use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Query\Builder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Mockery\MockInterface;
 
@@ -24,12 +22,11 @@ class LogPackageMigrationTest extends TestCase
     public function ensures_that_it_will_only_handle_framework_migrations()
     {
         // Arrange
-        DB::spy()
-            ->shouldNotReceive('table');
+        $initialCount = FrameworkMigration::count();
 
         $migration = $this->spy(
             Migration::class,
-            function(MockInterface $mock) {
+            function (MockInterface $mock) {
                 $mock->shouldNotReceive('filename');
                 $mock->shouldNotReceive('package');
             }
@@ -43,6 +40,7 @@ class LogPackageMigrationTest extends TestCase
         ));
 
         // Assert
+        $this->assertDatabaseCount(FrameworkMigration::class, $initialCount);
     }
 
     /**
@@ -51,20 +49,9 @@ class LogPackageMigrationTest extends TestCase
     public function ensures_that_it_will_handle_framework_migrations_when_applying_changes()
     {
         // Arrange
-        $mock = DB::spy();
-        $mock->shouldReceive('table')
-            ->andReturnSelf();
-        $mock->shouldReceive('insert')
-            ->with([
-                'migration' => 'foo',
-                'package_name' => 'bar',
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-
         $migration = $this->spy(
             CoreMigration::class,
-            function(MockInterface $mock) {
+            function (MockInterface $mock) {
                 $mock->shouldReceive('filename')
                     ->andReturn('foo');
                 $mock->shouldReceive('package')
@@ -80,6 +67,10 @@ class LogPackageMigrationTest extends TestCase
         ));
 
         // Assert
+        $this->assertDatabaseHas(FrameworkMigration::class, [
+            'migration' => 'foo',
+            'package_name' => 'bar',
+        ]);
     }
 
     /**
@@ -88,18 +79,11 @@ class LogPackageMigrationTest extends TestCase
     public function ensures_that_it_will_handle_framework_migrations_when_remove_changes_works_without_the_logging_table()
     {
         // Arrange
-        $mock = DB::spy();
-
-        $mock->shouldReceive('connection', 'getSchemaBuilder')
-            ->andReturnSelf();
-
-        $mock->shouldReceive('hasTable')
-            ->with('core_migrations')
-            ->andReturn(false);
+        Schema::drop('framework_migrations');
 
         $migration = $this->spy(
             CoreMigration::class,
-            function(MockInterface $mock) {
+            function (MockInterface $mock) {
                 $mock->shouldNotReceive('filename');
                 $mock->shouldNotReceive('package');
             }
@@ -121,34 +105,19 @@ class LogPackageMigrationTest extends TestCase
     public function ensures_that_it_will_handle_framework_migrations_when_remove_changes_works_with_the_logging_table()
     {
         // Arrange
-        $mock = DB::spy();
-
-        $mock->shouldReceive('connection', 'getSchemaBuilder')
-            ->andReturnSelf();
-
-        $mock->shouldReceive('table')
-            ->andReturnSelf();
-        $mock->shouldReceive('where')
-            ->with([
-                'migration' => 'foo',
-                'package_name' => 'bar',
-            ])->andReturnSelf();
-        $mock->shouldReceive('update')
-            ->with([
-                'deleted_at' => now(),
-            ]);
-
-        $mock->shouldReceive('hasTable')
-            ->with('core_migrations')
-            ->andReturn(true);
+        /**
+         * @var FrameworkMigration
+         */
+        $loggedMigration = FrameworkMigration::factory()
+            ->create();
 
         $migration = $this->spy(
             CoreMigration::class,
-            function(MockInterface $mock) {
+            function (MockInterface $mock) use ($loggedMigration) {
                 $mock->shouldReceive('filename')
-                    ->andReturn('foo');
+                    ->andReturn($loggedMigration->migration);
                 $mock->shouldReceive('package')
-                    ->andReturn('bar');
+                    ->andReturn($loggedMigration->package_name);
             }
         );
         $handler = new LogPackageMigration();
@@ -160,5 +129,6 @@ class LogPackageMigrationTest extends TestCase
         ));
 
         // Assert
+        $this->assertSoftDeleted($loggedMigration);
     }
 }

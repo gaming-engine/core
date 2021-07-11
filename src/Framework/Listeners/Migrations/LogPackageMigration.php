@@ -1,11 +1,11 @@
 <?php
 
-namespace GamingEngine\Core\Listeners\Migrations;
+namespace GamingEngine\Core\Framework\Listeners\Migrations;
 
-use GamingEngine\Core\Migrations\IGamingEngineMigration;
+use GamingEngine\Core\Framework\Migrations\IGamingEngineMigration;
+use GamingEngine\Core\Framework\Models\FrameworkMigration;
 use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class LogPackageMigration
@@ -14,48 +14,40 @@ class LogPackageMigration
     {
         $migration = $this->frameworkMigration($migrationEnded->migration);
 
-        if (!$migration) {
+        if (! $migration) {
             return;
         }
 
         if ($migrationEnded->method === 'up') {
             $this->logUpgrade($migration);
-        }
-        else {
+        } else {
             $this->logDowngrade($migration);
         }
     }
 
     private function logUpgrade(IGamingEngineMigration $migration): void
     {
-        DB::table('core_migrations')
-            ->insert([
-                'migration' => $migration->filename(),
-                'package_name' => $migration->package(),
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
+        FrameworkMigration::create([
+            'migration' => $migration->filename(),
+            'package_name' => $migration->package(),
+        ]);
     }
 
     private function logDowngrade(IGamingEngineMigration $migration): void
     {
-        if(!Schema::hasTable('core_migrations')) {
+        if (! Schema::hasTable((new FrameworkMigration())->getTable())) {
             return;
         }
 
-        DB::table('core_migrations')
-            ->where([
-                'migration' => $migration->filename(),
-                'package_name' => $migration->package(),
-            ])
-            ->update([
-                'deleted_at' => now(),
-            ]);
+        FrameworkMigration::where([
+            'migration' => $migration->filename(),
+            'package_name' => $migration->package(),
+        ])->delete();
     }
 
     private function frameworkMigration(Migration $migration): ?IGamingEngineMigration
     {
-        if($migration instanceof IGamingEngineMigration) {
+        if ($migration instanceof IGamingEngineMigration) {
             return $migration;
         }
 

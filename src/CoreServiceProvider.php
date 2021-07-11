@@ -19,7 +19,10 @@ class CoreServiceProvider extends PackageServiceProvider
             ->name('gaming-engine::core')
             ->hasConfigFile('gaming-engine-core')
             ->hasViews()
-            ->hasMigration('create_core_migrations_table')
             ->hasCommand(CoreCommand::class);
+
+        $this->loadMigrationsFrom([
+            'database/migrations',
+        ]);
     }
 }

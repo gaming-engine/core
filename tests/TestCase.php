@@ -5,6 +5,7 @@ namespace GamingEngine\Core\Tests;
 use GamingEngine\Core\CoreServiceProvider;
 use GamingEngine\Core\EventServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -14,7 +15,13 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'GamingEngine\\Core\\Database\\Factories\\'.class_basename($modelName).'Factory'
+            fn (string $modelName) => Str::of($modelName)
+                    ->replace(
+                        'GamingEngine\\Core\\',
+                        'GamingEngine\\Core\\Database\\Factories\\'
+                    )
+                    ->replace('\\Models\\', '\\')
+                    . 'Factory'
         );
     }
 

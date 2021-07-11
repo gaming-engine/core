@@ -1,11 +1,10 @@
 <?php
 
-namespace GamingEngine\Core\Migrations;
+namespace GamingEngine\Core\Framework\Migrations;
 
-use GamingEngine\Core\Core;
+use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Arr;
 use ReflectionClass;
-use Illuminate\Database\Migrations\Migration;
 
 abstract class BaseMigration extends Migration implements IGamingEngineMigration
 {

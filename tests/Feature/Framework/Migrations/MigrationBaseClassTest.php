@@ -1,6 +1,6 @@
 <?php
 
-namespace GamingEngine\Core\Tests\Feature\Migrations;
+namespace GamingEngine\Core\Tests\Feature\Framework\Migrations;
 
 use GamingEngine\Core\Core;
 use GamingEngine\Core\Tests\TestCase;
