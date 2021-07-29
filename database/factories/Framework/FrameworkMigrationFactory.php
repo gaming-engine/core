@@ -13,7 +13,7 @@ class FrameworkMigrationFactory extends Factory
     {
         return [
             'migration' => $this->faker->slug(4),
-            'package_name' => $this->faker->slug(3),
+            'module_name' => $this->faker->slug(3),
         ];
     }
 }

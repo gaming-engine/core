@@ -12,7 +12,9 @@ This repo can be used as to scaffold a Laravel package. Follow these steps to ge
 2. Run "./configure-core.sh" to run a script that will replace all placeholders throughout all the files
 3. Remove this block of text.
 4. Have fun creating your package.
-5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
+5. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel
+   Package Training</a> video course.
+
 ---
 
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
@@ -21,9 +23,12 @@ This is where your description should go. Limit it to a paragraph or two. Consid
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/core.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/core)
 
-We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
+We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can
+support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
-We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
+We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards
+on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
 ## Installation
 
@@ -41,6 +46,7 @@ php artisan migrate
 ```
 
 You can publish the config file with:
+
 ```bash
 php artisan vendor:publish --provider="GamingEngine\Core\CoreServiceProvider" --tag="core-config"
 ```

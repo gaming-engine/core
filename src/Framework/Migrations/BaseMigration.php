@@ -16,7 +16,7 @@ abstract class BaseMigration extends Migration implements IGamingEngineMigration
 
         $name = Arr::last($elements);
 
-        [$name, ] = explode('.', $name);
+        [$name,] = explode('.', $name);
 
         return $name;
     }

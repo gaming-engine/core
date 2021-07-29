@@ -21,8 +21,21 @@ class TestCase extends Orchestra
                         'GamingEngine\\Core\\Database\\Factories\\'
                     )
                     ->replace('\\Models\\', '\\')
-                    . 'Factory'
+                . 'Factory'
         );
+    }
+
+    public function getEnvironmentSetUp($app)
+    {
+        config()->set('database.default', 'testing');
+
+        collect([
+            __DIR__.'/../database/migrations/2021_07_11_000000_create_framework_migrations_table.php',
+            __DIR__.'/../database/migrations/2021_07_11_000000_create_framework_modules_table.php',
+        ])->each(function (string $path) {
+            $migration = include $path;
+            $migration->up();
+        });
     }
 
     protected function getPackageProviders($app)
@@ -31,15 +44,5 @@ class TestCase extends Orchestra
             CoreServiceProvider::class,
             EventServiceProvider::class,
         ];
-    }
-
-    public function getEnvironmentSetUp($app)
-    {
-        config()->set('database.default', 'testing');
-
-        /*
-        include_once __DIR__.'/../database/migrations/create_core_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
     }
 }

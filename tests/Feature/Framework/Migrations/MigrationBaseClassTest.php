@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Tests\Feature\Framework\Migrations;
 
-use GamingEngine\Core\Core;
+use GamingEngine\Core\Framework\Module\CoreModule;
 use GamingEngine\Core\Tests\TestCase;
 
 class MigrationBaseClassTest extends TestCase
@@ -19,7 +19,7 @@ class MigrationBaseClassTest extends TestCase
 
         // Assert
         $this->assertEquals(
-            Core::PACKAGE,
+            CoreModule::PACKAGE,
             $migration->package()
         );
     }

@@ -25,11 +25,20 @@ class LogPackageMigration
         }
     }
 
+    private function frameworkMigration(Migration $migration): ?IGamingEngineMigration
+    {
+        if ($migration instanceof IGamingEngineMigration) {
+            return $migration;
+        }
+
+        return null;
+    }
+
     private function logUpgrade(IGamingEngineMigration $migration): void
     {
         FrameworkMigration::create([
             'migration' => $migration->filename(),
-            'package_name' => $migration->package(),
+            'module_name' => $migration->package(),
         ]);
     }
 
@@ -41,16 +50,7 @@ class LogPackageMigration
 
         FrameworkMigration::where([
             'migration' => $migration->filename(),
-            'package_name' => $migration->package(),
+            'module_name' => $migration->package(),
         ])->delete();
-    }
-
-    private function frameworkMigration(Migration $migration): ?IGamingEngineMigration
-    {
-        if ($migration instanceof IGamingEngineMigration) {
-            return $migration;
-        }
-
-        return null;
     }
 }

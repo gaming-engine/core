@@ -8,14 +8,11 @@ use GamingEngine\Core\Framework\Models\FrameworkMigration;
 use GamingEngine\Core\Tests\TestCase;
 use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Schema;
 use Mockery\MockInterface;
 
 class LogPackageMigrationTest extends TestCase
 {
-    use RefreshDatabase;
-
     /**
      * @test
      */
@@ -69,15 +66,15 @@ class LogPackageMigrationTest extends TestCase
         // Assert
         $this->assertDatabaseHas(FrameworkMigration::class, [
             'migration' => 'foo',
-            'package_name' => 'bar',
+            'module_name' => 'bar',
         ]);
     }
 
     /**
      * @test
      */
-    public function ensures_that_it_will_handle_framework_migrations_when_remove_changes_works_without_the_logging_table()
-    {
+    public function ensures_that_it_will_handle_framework_migrations_when_remove_changes_works_without_the_logging_table(
+    ) {
         // Arrange
         Schema::drop('framework_migrations');
 
@@ -117,7 +114,7 @@ class LogPackageMigrationTest extends TestCase
                 $mock->shouldReceive('filename')
                     ->andReturn($loggedMigration->migration);
                 $mock->shouldReceive('package')
-                    ->andReturn($loggedMigration->package_name);
+                    ->andReturn($loggedMigration->module_name);
             }
         );
         $handler = new LogPackageMigration();
