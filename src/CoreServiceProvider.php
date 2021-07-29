@@ -20,7 +20,7 @@ class CoreServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('gaming-engine::core')
+            ->name('gaming-engine:core')
             ->hasConfigFile('gaming-engine-core')
             ->hasViews()
             ->hasCommand(CoreCommand::class);

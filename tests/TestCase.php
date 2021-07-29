@@ -3,7 +3,7 @@
 namespace GamingEngine\Core\Tests;
 
 use GamingEngine\Core\CoreServiceProvider;
-use GamingEngine\Core\EventServiceProvider;
+use GamingEngine\Core\Framework\Providers\EventServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase as Orchestra;

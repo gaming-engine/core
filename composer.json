@@ -58,7 +58,8 @@
         "laravel": {
             "providers": [
                 "GamingEngine\\Core\\CoreServiceProvider",
-                "GamingEngine\\Core\\EventServiceProvider"
+                "GamingEngine\\Core\\Framework\\Providers\\EventServiceProvider",
+                "GamingEngine\\Core\\Framework\\Providers\\RouteServiceProvider"
             ],
             "aliases": {
                 "Core": "GamingEngine\\Core\\CoreFacade"

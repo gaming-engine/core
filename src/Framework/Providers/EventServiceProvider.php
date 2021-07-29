@@ -1,6 +1,6 @@
 <?php
 
-namespace GamingEngine\Core;
+namespace GamingEngine\Core\Framework\Providers;
 
 use GamingEngine\Core\Framework\Listeners\Migrations\LogPackageMigration;
 use Illuminate\Database\Events\MigrationEnded;
