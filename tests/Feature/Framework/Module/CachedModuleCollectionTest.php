@@ -3,8 +3,8 @@
 namespace GamingEngine\Core\Tests\Feature\Framework\Module;
 
 use GamingEngine\Core\Framework\Module\CachedModuleCollection;
-use GamingEngine\Core\Framework\Module\IModuleCollection;
 use GamingEngine\Core\Framework\Module\Module;
+use GamingEngine\Core\Framework\Module\ModuleCollection;
 use GamingEngine\Core\Tests\TestCase;
 use Illuminate\Support\Facades\Cache;
 
@@ -16,7 +16,7 @@ class CachedModuleCollectionTest extends TestCase
     public function when_constructed_it_will_not_auto_hydrate_if_nothing_is_present()
     {
         // Arrange
-        $moduleCollection = $this->spy(IModuleCollection::class);
+        $moduleCollection = $this->spy(ModuleCollection::class);
         Cache::shouldReceive('get')
             ->once()
             ->andReturn([]);
@@ -35,7 +35,7 @@ class CachedModuleCollectionTest extends TestCase
     public function when_constructed_it_will_not_auto_hydrate_if_no_cache_is_initialized()
     {
         // Arrange
-        $moduleCollection = $this->spy(IModuleCollection::class);
+        $moduleCollection = $this->spy(ModuleCollection::class);
         Cache::shouldReceive('get')
             ->once()
             ->andReturn(null);
@@ -57,7 +57,7 @@ class CachedModuleCollectionTest extends TestCase
             $this->mock(Module::class),
         ];
 
-        $moduleCollection = $this->spy(IModuleCollection::class);
+        $moduleCollection = $this->spy(ModuleCollection::class);
         Cache::shouldReceive('get')
             ->once()
             ->andReturn($cache);
@@ -78,7 +78,7 @@ class CachedModuleCollectionTest extends TestCase
     public function will_keep_track_of_multiple_modules_being_added_and_cache_the_data()
     {
         // Arrange
-        $moduleCollection = $this->spy(IModuleCollection::class);
+        $moduleCollection = $this->spy(ModuleCollection::class);
         $moduleCollection->shouldReceive('addModules')
             ->andReturn(1);
         Cache::shouldReceive('rememberForever', 'get');
@@ -99,7 +99,7 @@ class CachedModuleCollectionTest extends TestCase
     {
         // Arrange
         $mock = $this->mock(Module::class);
-        $moduleCollection = $this->mock(IModuleCollection::class);
+        $moduleCollection = $this->mock(ModuleCollection::class);
         $moduleCollection->shouldReceive('addModule')
             ->andReturn(true);
         $moduleCollection->shouldReceive('all')
@@ -132,7 +132,7 @@ class CachedModuleCollectionTest extends TestCase
             ->andReturn(null);
 
         $mock = $this->mock(Module::class);
-        $moduleCollection = $this->mock(IModuleCollection::class);
+        $moduleCollection = $this->mock(ModuleCollection::class);
         $moduleCollection->shouldReceive('addModule')
             ->andReturn(false);
         $moduleCollection->shouldNotReceive('all');
@@ -154,7 +154,7 @@ class CachedModuleCollectionTest extends TestCase
     public function is_able_to_determine_if_it_has_a_module()
     {
         // Arrange
-        $moduleCollection = $this->spy(IModuleCollection::class);
+        $moduleCollection = $this->spy(ModuleCollection::class);
         $moduleCollection->shouldReceive('hasModule')
             ->andReturn(true);
 
@@ -173,7 +173,7 @@ class CachedModuleCollectionTest extends TestCase
     public function is_able_to_determine_if_it_does_not_have_a_module()
     {
         // Arrange
-        $moduleCollection = $this->spy(IModuleCollection::class);
+        $moduleCollection = $this->spy(ModuleCollection::class);
         $moduleCollection->shouldReceive('hasModule')
             ->andReturn(false);
 
@@ -195,7 +195,7 @@ class CachedModuleCollectionTest extends TestCase
         $data = [
             $this->mock(Module::class),
         ];
-        $moduleCollection = $this->spy(IModuleCollection::class);
+        $moduleCollection = $this->spy(ModuleCollection::class);
         $moduleCollection->shouldReceive('all')
             ->andReturn($data);
         $collection = new CachedModuleCollection($moduleCollection);

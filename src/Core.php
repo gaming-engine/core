@@ -5,15 +5,15 @@ namespace GamingEngine\Core;
 use GamingEngine\Core\Framework\Events\Module\ModuleAdded;
 use GamingEngine\Core\Framework\Installation\CoreInstallationVerification;
 use GamingEngine\Core\Framework\Models\FrameworkModule;
-use GamingEngine\Core\Framework\Module\IModuleCollection;
 use GamingEngine\Core\Framework\Module\Module;
+use GamingEngine\Core\Framework\Module\ModuleCollection;
 
 class Core
 {
-    private IModuleCollection $moduleCollection;
+    private ModuleCollection $moduleCollection;
     private CoreInstallationVerification $verification;
 
-    public function __construct(IModuleCollection $moduleCollection, CoreInstallationVerification $verification)
+    public function __construct(ModuleCollection $moduleCollection, CoreInstallationVerification $verification)
     {
         $this->moduleCollection = $moduleCollection;
         $this->verification = $verification;

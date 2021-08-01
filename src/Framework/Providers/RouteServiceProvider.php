@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Framework\Providers;
 
-use GamingEngine\Core\Framework\Controllers\HomeController;
+use GamingEngine\Core\Framework\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 

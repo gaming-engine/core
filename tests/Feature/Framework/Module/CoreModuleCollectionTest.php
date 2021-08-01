@@ -2,11 +2,11 @@
 
 namespace GamingEngine\Core\Tests\Feature\Framework\Module;
 
+use GamingEngine\Core\Framework\Module\CoreModuleCollection;
 use GamingEngine\Core\Framework\Module\Module;
-use GamingEngine\Core\Framework\Module\ModuleCollection;
 use GamingEngine\Core\Tests\TestCase;
 
-class ModuleCollectionTest extends TestCase
+class CoreModuleCollectionTest extends TestCase
 {
     /**
      * @test
@@ -16,7 +16,7 @@ class ModuleCollectionTest extends TestCase
         // Arrange
 
         // Act
-        $moduleCollection = new ModuleCollection();
+        $moduleCollection = new CoreModuleCollection();
 
         // Assert
         $this->assertCount(0, $moduleCollection->all());
@@ -38,7 +38,7 @@ class ModuleCollectionTest extends TestCase
         ];
 
         // Act
-        $moduleCollection = new ModuleCollection($data);
+        $moduleCollection = new CoreModuleCollection($data);
 
         // Assert
         $this->assertCount(1, $moduleCollection->all());
@@ -51,7 +51,7 @@ class ModuleCollectionTest extends TestCase
     public function ensures_you_are_able_to_add_new_modules()
     {
         // Arrange
-        $moduleCollection = new ModuleCollection();
+        $moduleCollection = new CoreModuleCollection();
         $first = $this->mock(Module::class);
         $first->shouldReceive('name')
             ->andReturn('foo');
@@ -75,7 +75,7 @@ class ModuleCollectionTest extends TestCase
     public function ensures_that_duplicate_modules_are_not_able_to_be_added()
     {
         // Arrange
-        $moduleCollection = new ModuleCollection();
+        $moduleCollection = new CoreModuleCollection();
         $first = $this->mock(Module::class);
         $first->shouldReceive('name')
             ->andReturn('foo');
@@ -96,7 +96,7 @@ class ModuleCollectionTest extends TestCase
     public function ensures_that_you_are_able_to_add_a_module()
     {
         // Arrange
-        $moduleCollection = new ModuleCollection();
+        $moduleCollection = new CoreModuleCollection();
         $mock = $this->mock(Module::class);
 
         // Act
@@ -114,7 +114,7 @@ class ModuleCollectionTest extends TestCase
     {
         // Arrange
         $mock = $this->mock(Module::class);
-        $moduleCollection = new ModuleCollection([
+        $moduleCollection = new CoreModuleCollection([
             $mock,
         ]);
 
@@ -133,7 +133,7 @@ class ModuleCollectionTest extends TestCase
     {
         // Arrange
         $mock = $this->mock(Module::class);
-        $moduleCollection = new ModuleCollection([
+        $moduleCollection = new CoreModuleCollection([
             $mock,
         ]);
 
@@ -151,7 +151,7 @@ class ModuleCollectionTest extends TestCase
     {
         // Arrange
         $mock = $this->mock(Module::class);
-        $moduleCollection = new ModuleCollection();
+        $moduleCollection = new CoreModuleCollection();
 
         // Act
         $response = $moduleCollection->hasModule($mock);

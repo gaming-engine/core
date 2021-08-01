@@ -4,6 +4,7 @@ namespace GamingEngine\Core\Tests;
 
 use GamingEngine\Core\CoreServiceProvider;
 use GamingEngine\Core\Framework\Providers\EventServiceProvider;
+use GamingEngine\Core\Framework\Providers\RouteServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -43,6 +44,7 @@ class TestCase extends Orchestra
         return [
             CoreServiceProvider::class,
             EventServiceProvider::class,
+            RouteServiceProvider::class,
         ];
     }
 }

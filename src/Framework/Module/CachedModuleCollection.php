@@ -4,12 +4,12 @@ namespace GamingEngine\Core\Framework\Module;
 
 use Illuminate\Support\Facades\Cache;
 
-class CachedModuleCollection implements IModuleCollection
+class CachedModuleCollection implements ModuleCollection
 {
-    private IModuleCollection $moduleCollection;
+    private ModuleCollection $moduleCollection;
     const CACHE_KEY = 'gaming-engine::module-details';
 
-    public function __construct(IModuleCollection $moduleCollection)
+    public function __construct(ModuleCollection $moduleCollection)
     {
         $this->moduleCollection = $moduleCollection;
 

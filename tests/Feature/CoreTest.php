@@ -5,8 +5,8 @@ namespace GamingEngine\Core\Tests\Feature;
 use GamingEngine\Core\Core;
 use GamingEngine\Core\Framework\Installation\CoreInstallationVerification;
 use GamingEngine\Core\Framework\Models\FrameworkModule;
-use GamingEngine\Core\Framework\Module\IModuleCollection;
 use GamingEngine\Core\Framework\Module\Module;
+use GamingEngine\Core\Framework\Module\ModuleCollection;
 use GamingEngine\Core\Tests\TestCase;
 
 class CoreTest extends TestCase
@@ -17,7 +17,7 @@ class CoreTest extends TestCase
     public function ensures_that_no_modules_are_added_if_the_framework_is_not_installed()
     {
         // Arrange
-        $moduleCollection = $this->mock(IModuleCollection::class);
+        $moduleCollection = $this->mock(ModuleCollection::class);
         $verification = $this->mock(CoreInstallationVerification::class);
         $verification->shouldReceive('installed')
             ->andReturn(false);
@@ -37,7 +37,7 @@ class CoreTest extends TestCase
     public function is_able_to_determine_if_a_module_is_installed()
     {
         // Arrange
-        $moduleCollection = $this->mock(IModuleCollection::class);
+        $moduleCollection = $this->mock(ModuleCollection::class);
         $moduleCollection->shouldReceive('hasModule')
             ->andReturn(true);
         $verification = $this->mock(CoreInstallationVerification::class);
@@ -72,7 +72,7 @@ class CoreTest extends TestCase
             ->andReturn('x.x.x');
         $module->shouldReceive('setLicense', [$frameworkModule->license_key]);
 
-        $moduleCollection = $this->mock(IModuleCollection::class);
+        $moduleCollection = $this->mock(ModuleCollection::class);
         $moduleCollection->shouldReceive('addModule')
             ->andReturnTrue();
         $core = new Core($moduleCollection, $verification);

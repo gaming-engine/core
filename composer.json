@@ -44,9 +44,9 @@
     "scripts": {
         "psalm": "vendor/bin/psalm",
         "test": "vendor/bin/testbench package:test --parallel --no-coverage",
-        "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage",
-        "test-coverage:check": "XDEBUG_MODE=coverage phpunit && php coverage-checker.php ./build/clover.xml 80",
-        "coverage:show": "serve build/coverage",
+        "test:coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage",
+        "test:coverage:check": "XDEBUG_MODE=coverage phpunit && php coverage-checker.php ./build/clover.xml 80",
+        "test:coverage:show": "serve build/coverage",
         "post-autoload-dump": [
             "@php ./vendor/bin/testbench package:discover --ansi"
         ]

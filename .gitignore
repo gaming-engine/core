@@ -12,3 +12,6 @@ node_modules
 .php-cs-fixer.cache
 *.cache
 .DS_Store
+.dist
+dist/
+mix-manifest.json

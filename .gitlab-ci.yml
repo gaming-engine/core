@@ -34,7 +34,8 @@ before_script:
   # comment this out if you don't have a frontend build
   # you can change this to do your frontend building script like
   # npm run build
-  #- npm run dev
+  - npm run dev
+  - npm run production
 
 format:
   script:

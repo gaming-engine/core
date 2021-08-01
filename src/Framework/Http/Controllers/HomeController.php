@@ -1,6 +1,6 @@
 <?php
 
-namespace GamingEngine\Core\Framework\Controllers;
+namespace GamingEngine\Core\Framework\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
