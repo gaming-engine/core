@@ -61,7 +61,8 @@ class CoreModuleCollectionTest extends TestCase
 
         // Act
         $total = $moduleCollection->addModules([
-            $first, $second,
+            $first,
+            $second,
         ]);
 
         // Assert
@@ -82,7 +83,8 @@ class CoreModuleCollectionTest extends TestCase
 
         // Act
         $total = $moduleCollection->addModules([
-            $first, $first,
+            $first,
+            $first,
         ]);
 
         // Assert

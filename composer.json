@@ -18,6 +18,7 @@
     "require": {
         "php": "^8.0|^8.1",
         "gaming-engine/dictionary": "dev-main",
+        "gaming-engine/string-tools": "dev-main",
         "illuminate/contracts": "^8.37",
         "spatie/laravel-package-tools": "^1.4.3"
     },
@@ -33,7 +34,8 @@
     "autoload": {
         "psr-4": {
             "GamingEngine\\Core\\": "src",
-            "GamingEngine\\Core\\Database\\Factories\\": "database/factories"
+            "GamingEngine\\Core\\Database\\Factories\\": "database/factories",
+            "GamingEngine\\Core\\Database\\Seeders\\": "database/seeders"
         }
     },
     "autoload-dev": {
@@ -46,7 +48,7 @@
         "test": "vendor/bin/testbench package:test --parallel --no-coverage",
         "test:coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-html coverage",
         "test:coverage:check": "XDEBUG_MODE=coverage phpunit && php coverage-checker.php ./build/clover.xml 80",
-        "test:coverage:show": "serve build/coverage",
+        "test:coverage:show": "XDEBUG_MODE=coverage phpunit && cd build/coverage && serve .",
         "post-autoload-dump": [
             "@php ./vendor/bin/testbench package:discover --ansi"
         ]
@@ -59,7 +61,8 @@
             "providers": [
                 "GamingEngine\\Core\\CoreServiceProvider",
                 "GamingEngine\\Core\\Framework\\Providers\\EventServiceProvider",
-                "GamingEngine\\Core\\Framework\\Providers\\RouteServiceProvider"
+                "GamingEngine\\Core\\Framework\\Providers\\RouteServiceProvider",
+                "GamingEngine\\Core\\Framework\\Providers\\ConfigurationServiceProvider"
             ],
             "aliases": {
                 "Core": "GamingEngine\\Core\\CoreFacade"

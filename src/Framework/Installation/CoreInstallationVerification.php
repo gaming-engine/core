@@ -2,13 +2,25 @@
 
 namespace GamingEngine\Core\Framework\Installation;
 
+use GamingEngine\Core\Framework\Database\DatabaseSchema;
 use GamingEngine\Core\Framework\Models\FrameworkModule;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\QueryException;
 
 class CoreInstallationVerification implements InstallationVerification
 {
+    private DatabaseSchema $schema;
+
+    public function __construct(DatabaseSchema $schema)
+    {
+        $this->schema = $schema;
+    }
+
     public function installed(): bool
     {
-        return Schema::hasTable((new FrameworkModule())->getTable());
+        try {
+            return $this->schema->hasTable((new FrameworkModule())->getTable());
+        } catch (QueryException $exception) {
+            return false;
+        }
     }
 }

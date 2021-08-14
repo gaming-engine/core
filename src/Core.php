@@ -40,13 +40,13 @@ class Core
         }
     }
 
-    public function hasRegisteredPackage(Module $module): bool
-    {
-        return $this->moduleCollection->hasModule($module);
-    }
-
     public function installed(): bool
     {
         return $this->verification->installed();
+    }
+
+    public function hasRegisteredPackage(Module $module): bool
+    {
+        return $this->moduleCollection->hasModule($module);
     }
 }

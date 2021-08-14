@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Framework\Environment;
 
-use GamingEngine\Core\Framework\Configuration\Application\ApplicationConfiguration;
+use GamingEngine\Core\Configuration\Application\ApplicationConfiguration;
 
 class EnvironmentFactory
 {

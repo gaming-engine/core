@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Tests\Feature\Framework\Environment;
 
-use GamingEngine\Core\Framework\Configuration\Application\ApplicationConfiguration;
+use GamingEngine\Core\Configuration\Application\ApplicationConfiguration;
 use GamingEngine\Core\Framework\Environment\DevelopmentEnvironment;
 use GamingEngine\Core\Framework\Environment\EnvironmentFactory;
 use GamingEngine\Core\Framework\Environment\Environments;

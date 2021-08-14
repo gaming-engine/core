@@ -13,7 +13,7 @@ const path = require('path');
  |
  */
 
-const environment = mix.inProduction() ? 'prod' : 'dev';
+const environment = mix.inProduction() ? 'prod' : 'local';
 
 mix.options({
         terser: {
@@ -27,8 +27,8 @@ mix.options({
     .setPublicPath(`dist/${environment}`)
     .js('resources/js/app.js', 'public/js')
     .vue()
-    .postCss("resources/css/app.css", "public/css/gaming-engine.css", [
-        require("tailwindcss"),
+    .postCss('resources/css/app.css', 'public/css/gaming-engine.css', [
+        require('tailwindcss'),
     ])
     .version()
     .webpackConfig({

@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Cache;
 
 class CachedModuleCollection implements ModuleCollection
 {
-    private ModuleCollection $moduleCollection;
     const CACHE_KEY = 'gaming-engine::module-details';
+    private ModuleCollection $moduleCollection;
 
     public function __construct(ModuleCollection $moduleCollection)
     {
@@ -32,6 +32,22 @@ class CachedModuleCollection implements ModuleCollection
         return $total;
     }
 
+    private function updateCache()
+    {
+        Cache::rememberForever(
+            self::CACHE_KEY,
+            fn () => $this->moduleCollection->all()
+        );
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function all(): array
+    {
+        return $this->moduleCollection->all();
+    }
+
     public function addModule(Module $module): bool
     {
         $result = $this->moduleCollection->addModule($module);
@@ -46,21 +62,5 @@ class CachedModuleCollection implements ModuleCollection
     public function hasModule(Module $module): bool
     {
         return $this->moduleCollection->hasModule($module);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function all(): array
-    {
-        return $this->moduleCollection->all();
-    }
-
-    private function updateCache()
-    {
-        Cache::rememberForever(
-            self::CACHE_KEY,
-            fn () => $this->moduleCollection->all()
-        );
     }
 }

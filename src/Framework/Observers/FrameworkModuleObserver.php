@@ -17,6 +17,13 @@ class FrameworkModuleObserver
         $this->removeFromCache($module);
     }
 
+    private function removeFromCache(FrameworkModule $module)
+    {
+        foreach ($this->cacheKeys as $cacheKey) {
+            Cache::forget($cacheKey);
+        }
+    }
+
     public function updated(FrameworkModule $module)
     {
         $this->removeFromCache($module);
@@ -30,12 +37,5 @@ class FrameworkModuleObserver
     public function forceDeleted(FrameworkModule $module)
     {
         $this->removeFromCache($module);
-    }
-
-    private function removeFromCache(FrameworkModule $module)
-    {
-        foreach ($this->cacheKeys as $cacheKey) {
-            Cache::forget($cacheKey);
-        }
     }
 }
