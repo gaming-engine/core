@@ -11,7 +11,7 @@ class ConfigurationPropertyException extends Exception
     {
         parent::__construct(
             __(
-                'gaming-engine::configuration.exceptions.invalid-property',
+                'gaming-engine:core::configuration.exceptions.invalid-property',
                 [
                     'key' => $configuration->key,
                     'category' => $configuration->category,

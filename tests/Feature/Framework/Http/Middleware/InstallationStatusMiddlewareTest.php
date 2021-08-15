@@ -84,19 +84,8 @@ class InstallationStatusMiddlewareTest extends TestCase
         $core->shouldReceive('installed')
             ->andReturn(false);
 
-        URL::shouldReceive('route')
-            ->withSomeOfArgs('install.index')
-            ->andReturn('install-index');
-        URL::shouldReceive('to')
-            ->withSomeOfArgs('install-index')
-            ->andReturn('foo');
-
-        URL::shouldReceive('getRequest')
-            ->andReturn($this->mock(Request::class));
-
-        Route::shouldReceive('has')
-            ->withSomeOfArgs('install.index')
-            ->andReturn(true);
+        Route::name('install.index')
+            ->get('/foo', fn () => 'Testing');
 
         $middleware = new InstallationStatusMiddleware($core);
 
@@ -111,7 +100,7 @@ class InstallationStatusMiddlewareTest extends TestCase
         );
 
         // Assert
-        $this->assertEquals('foo', $result->getTargetUrl());
+        $this->assertEquals(route('install.index'), $result->getTargetUrl());
         $this->assertEquals(302, $result->getStatusCode());
     }
 }

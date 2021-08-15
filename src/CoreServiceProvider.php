@@ -23,33 +23,6 @@ class CoreServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
-        $this->app->singleton(
-            ApplicationConfiguration::class,
-            fn () => new LaravelConfiguration(config('app'))
-        );
-
-        $this->app->singleton(
-            Environment::class,
-            function () {
-                /**
-                 * @var EnvironmentFactory $factory
-                 */
-                $factory = app(EnvironmentFactory::class);
-
-                return $factory->build();
-            }
-        );
-
-        $this->app->singleton(
-            DatabaseSchema::class,
-            fn () => new Schema()
-        );
-
-        /*
-         * This class is a Package Service Provider
-         *
-         * More info: https://github.com/spatie/laravel-package-tools
-         */
         $package
             ->name('gaming-engine:core')
             ->hasConfigFile('gaming-engine-core')
@@ -105,12 +78,34 @@ class CoreServiceProvider extends PackageServiceProvider
     {
         $this->loadTranslationsFrom(
             __DIR__ . '/../resources/lang',
-            'gaming-engine'
+            'gaming-engine:core'
         );
     }
 
-    public function packageRegistered()
+    public function registeringPackage()
     {
+        $this->app->singleton(
+            ApplicationConfiguration::class,
+            fn () => new LaravelConfiguration(config('app'))
+        );
+
+        $this->app->singleton(
+            Environment::class,
+            function () {
+                /**
+                 * @var EnvironmentFactory $factory
+                 */
+                $factory = app(EnvironmentFactory::class);
+
+                return $factory->build();
+            }
+        );
+
+        $this->app->singleton(
+            DatabaseSchema::class,
+            fn () => new Schema()
+        );
+
         $this->app->singleton(
             ModuleCollection::class,
             fn () => new CachedModuleCollection(

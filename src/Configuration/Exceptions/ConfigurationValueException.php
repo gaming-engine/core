@@ -11,7 +11,7 @@ class ConfigurationValueException extends Exception
     {
         parent::__construct(
             __(
-                'gaming-engine::configuration.exceptions.invalid-value',
+                'gaming-engine:core::configuration.exceptions.invalid-value',
                 [
                     'key' => $configuration->key,
                     'value' => $configuration->value,

@@ -4,6 +4,7 @@ namespace GamingEngine\Core\Tests\Feature\Framework\Http\Controllers;
 
 use GamingEngine\Core\Core;
 use GamingEngine\Core\Tests\TestCase;
+use Illuminate\Support\Facades\Route;
 
 class InstallationRequiredControllerTest extends TestCase
 {
@@ -39,5 +40,25 @@ class InstallationRequiredControllerTest extends TestCase
 
         // Assert
         $response->assertRedirect('/');
+    }
+
+    /**
+     * @test
+     */
+    public function should_be_redirected_to_the_installer_if_it_exists()
+    {
+        // Arrange
+        $this->mock(Core::class)
+            ->shouldReceive('installed')
+            ->andReturn(false);
+
+        Route::name('install.index')
+            ->get('/install', fn () => 'Testing');
+
+        // Act
+        $response = $this->get(route('installation-required'));
+
+        // Assert
+        $response->assertRedirect('/install');
     }
 }
