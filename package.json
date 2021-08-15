@@ -16,7 +16,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/game-engine/core.git"
+        "url": "git+https://gitlab.com/gaming-engine/core.git"
     },
     "keywords": [
         "gaming-engine"
@@ -24,9 +24,9 @@
     "author": "Andrew Judd",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/game-engine/core/issues"
+        "url": "https://gitlab.com/gaming-engine/core/issues"
     },
-    "homepage": "https://github.com/game-engine/core#readme",
+    "homepage": "https://gitlab.com/gaming-engine/core#readme",
     "devDependencies": {
         "autoprefixer": "^10.3.1",
         "axios": "^0.21.1",
