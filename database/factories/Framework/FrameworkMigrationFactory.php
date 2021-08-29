@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Database\Factories\Framework;
 
-use GamingEngine\Core\Framework\Models\FrameworkMigration;
+use GamingEngine\Core\Framework\Entities\FrameworkMigration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FrameworkMigrationFactory extends Factory

@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Tests\Feature\Configuration\Observers;
 
-use GamingEngine\Core\Configuration\Models\Configuration;
+use GamingEngine\Core\Configuration\Entities\Configuration;
 use GamingEngine\Core\Configuration\Repositories\CachedConfigurationRepository;
 use GamingEngine\Core\Tests\TestCase;
 use GamingEngine\StringTools\StringHelper;

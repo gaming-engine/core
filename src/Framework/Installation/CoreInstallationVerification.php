@@ -3,7 +3,7 @@
 namespace GamingEngine\Core\Framework\Installation;
 
 use GamingEngine\Core\Framework\Database\DatabaseSchema;
-use GamingEngine\Core\Framework\Models\FrameworkModule;
+use GamingEngine\Core\Framework\Entities\FrameworkModule;
 use Illuminate\Database\QueryException;
 
 class CoreInstallationVerification implements InstallationVerification

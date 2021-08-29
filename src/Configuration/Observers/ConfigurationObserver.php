@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Configuration\Observers;
 
-use GamingEngine\Core\Configuration\Models\Configuration;
+use GamingEngine\Core\Configuration\Entities\Configuration;
 use GamingEngine\Core\Configuration\Repositories\CachedConfigurationRepository;
 use GamingEngine\StringTools\StringHelper;
 use Illuminate\Support\Facades\Cache;
@@ -25,21 +25,6 @@ class ConfigurationObserver
         $this->removeFromCache($module);
     }
 
-    private function removeFromCache(Configuration $configuration)
-    {
-        foreach ($this->cacheKeys as $cacheKey) {
-            Cache::forget(
-                $this->helper->template(
-                    $cacheKey,
-                    [
-                        'category' => $configuration->category,
-                        'key' => $configuration->key,
-                    ]
-                )
-            );
-        }
-    }
-
     public function updated(Configuration $module)
     {
         $this->removeFromCache($module);
@@ -53,5 +38,20 @@ class ConfigurationObserver
     public function forceDeleted(Configuration $module)
     {
         $this->removeFromCache($module);
+    }
+
+    private function removeFromCache(Configuration $configuration)
+    {
+        foreach ($this->cacheKeys as $cacheKey) {
+            Cache::forget(
+                $this->helper->template(
+                    $cacheKey,
+                    [
+                        'category' => $configuration->category,
+                        'key' => $configuration->key,
+                    ]
+                )
+            );
+        }
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace GamingEngine\Core\Framework\Models;
+namespace GamingEngine\Core\Framework\Entities;
 
 use GamingEngine\Core\Framework\Observers\FrameworkModuleObserver;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

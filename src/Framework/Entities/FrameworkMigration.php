@@ -1,6 +1,6 @@
 <?php
 
-namespace GamingEngine\Core\Framework\Models;
+namespace GamingEngine\Core\Framework\Entities;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

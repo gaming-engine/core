@@ -3,7 +3,7 @@
 namespace GamingEngine\Core\Configuration\Exceptions;
 
 use Exception;
-use GamingEngine\Core\Configuration\Models\Configuration;
+use GamingEngine\Core\Configuration\Entities\Configuration;
 
 class ConfigurationPropertyException extends Exception
 {

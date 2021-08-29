@@ -2,8 +2,8 @@
 
 namespace GamingEngine\Core\Tests\Feature\Configuration\Repositories;
 
+use GamingEngine\Core\Configuration\Entities\Configuration;
 use GamingEngine\Core\Configuration\Enumerations\ConfigurationCategoryTypes;
-use GamingEngine\Core\Configuration\Models\Configuration;
 use GamingEngine\Core\Configuration\Repositories\DatabaseConfigurationRepository;
 use GamingEngine\Core\Tests\TestCase;
 

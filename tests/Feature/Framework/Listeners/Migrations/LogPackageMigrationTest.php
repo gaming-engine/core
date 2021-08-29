@@ -2,9 +2,9 @@
 
 namespace GamingEngine\Core\Tests\Feature\Framework\Listeners\Migrations;
 
+use GamingEngine\Core\Framework\Entities\FrameworkMigration;
 use GamingEngine\Core\Framework\Listeners\Migrations\LogPackageMigration;
 use GamingEngine\Core\Framework\Migrations\CoreMigration;
-use GamingEngine\Core\Framework\Models\FrameworkMigration;
 use GamingEngine\Core\Tests\TestCase;
 use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Database\Migrations\Migration;

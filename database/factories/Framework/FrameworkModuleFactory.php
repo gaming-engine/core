@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Database\Factories\Framework;
 
-use GamingEngine\Core\Framework\Models\FrameworkModule;
+use GamingEngine\Core\Framework\Entities\FrameworkModule;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FrameworkModuleFactory extends Factory

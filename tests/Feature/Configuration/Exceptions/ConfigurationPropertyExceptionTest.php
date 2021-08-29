@@ -2,8 +2,8 @@
 
 namespace GamingEngine\Core\Tests\Feature\Configuration\Exceptions;
 
+use GamingEngine\Core\Configuration\Entities\Configuration;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationPropertyException;
-use GamingEngine\Core\Configuration\Models\Configuration;
 use GamingEngine\Core\Tests\TestCase;
 use Illuminate\Support\Str;
 

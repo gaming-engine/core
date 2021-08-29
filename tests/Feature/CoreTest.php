@@ -3,8 +3,8 @@
 namespace GamingEngine\Core\Tests\Feature;
 
 use GamingEngine\Core\Core;
+use GamingEngine\Core\Framework\Entities\FrameworkModule;
 use GamingEngine\Core\Framework\Installation\CoreInstallationVerification;
-use GamingEngine\Core\Framework\Models\FrameworkModule;
 use GamingEngine\Core\Framework\Module\Module;
 use GamingEngine\Core\Framework\Module\ModuleCollection;
 use GamingEngine\Core\Tests\TestCase;

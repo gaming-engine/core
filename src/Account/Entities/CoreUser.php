@@ -1,6 +1,6 @@
 <?php
 
-namespace GamingEngine\Core\Account\Models;
+namespace GamingEngine\Core\Account\Entities;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User;

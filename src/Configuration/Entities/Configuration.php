@@ -1,12 +1,12 @@
 <?php
 
-namespace GamingEngine\Core\Configuration\Models;
+namespace GamingEngine\Core\Configuration\Entities;
 
 use Closure;
 use GamingEngine\Core\Configuration\Enumerations\ConfigurationValueTypes;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationLockedException;
 use GamingEngine\Core\Configuration\Observers\ConfigurationObserver;
-use GamingEngine\Core\Framework\Models\Model;
+use GamingEngine\Core\Framework\Entities\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;

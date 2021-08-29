@@ -2,9 +2,9 @@
 
 namespace GamingEngine\Core\Database\Seeders;
 
+use GamingEngine\Core\Configuration\Entities\Configuration;
 use GamingEngine\Core\Configuration\Enumerations\ConfigurationCategoryTypes;
 use GamingEngine\Core\Configuration\Enumerations\ConfigurationValueTypes;
-use GamingEngine\Core\Configuration\Models\Configuration;
 use Illuminate\Database\Seeder;
 
 class SiteConfigurationKeySeeder extends Seeder

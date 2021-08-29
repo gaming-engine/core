@@ -2,8 +2,8 @@
 
 namespace GamingEngine\Core\Database\Factories\Configuration;
 
+use GamingEngine\Core\Configuration\Entities\Configuration;
 use GamingEngine\Core\Configuration\Enumerations\ConfigurationCategoryTypes;
-use GamingEngine\Core\Configuration\Models\Configuration;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class ConfigurationFactory extends Factory

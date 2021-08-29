@@ -24,7 +24,7 @@ class TestCase extends Orchestra
                         'GamingEngine\\Core\\',
                         'GamingEngine\\Core\\Database\\Factories\\'
                     )
-                    ->replace('\\Models\\', '\\')
+                    ->replace('\\Entities\\', '\\')
                 . 'Factory'
         );
 

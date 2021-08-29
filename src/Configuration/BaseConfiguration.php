@@ -2,9 +2,9 @@
 
 namespace GamingEngine\Core\Configuration;
 
+use GamingEngine\Core\Configuration\Entities\Configuration as ConfigurationModel;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationPropertyException;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationValueException;
-use GamingEngine\Core\Configuration\Models\Configuration as ConfigurationModel;
 use Illuminate\Support\Collection;
 use TypeError;
 

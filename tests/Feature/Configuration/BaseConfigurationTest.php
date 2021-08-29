@@ -3,9 +3,9 @@
 namespace GamingEngine\Core\Tests\Feature\Configuration;
 
 use GamingEngine\Core\Configuration\BaseConfiguration;
+use GamingEngine\Core\Configuration\Entities\Configuration;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationPropertyException;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationValueException;
-use GamingEngine\Core\Configuration\Models\Configuration;
 use GamingEngine\Core\Tests\TestCase;
 
 class BaseConfigurationTest extends TestCase

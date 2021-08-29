@@ -2,9 +2,9 @@
 
 namespace GamingEngine\Core;
 
+use GamingEngine\Core\Framework\Entities\FrameworkModule;
 use GamingEngine\Core\Framework\Events\Module\ModuleAdded;
 use GamingEngine\Core\Framework\Installation\CoreInstallationVerification;
-use GamingEngine\Core\Framework\Models\FrameworkModule;
 use GamingEngine\Core\Framework\Module\Module;
 use GamingEngine\Core\Framework\Module\ModuleCollection;
 

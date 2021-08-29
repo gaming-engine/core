@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Framework\Observers;
 
-use GamingEngine\Core\Framework\Models\FrameworkModule;
+use GamingEngine\Core\Framework\Entities\FrameworkModule;
 use GamingEngine\Core\Framework\Module\CachedModuleCollection;
 use Illuminate\Support\Facades\Cache;
 

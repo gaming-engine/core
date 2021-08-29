@@ -2,9 +2,9 @@
 
 namespace GamingEngine\Core\Tests\Feature\Configuration\Models;
 
+use GamingEngine\Core\Configuration\Entities\Configuration;
 use GamingEngine\Core\Configuration\Enumerations\ConfigurationValueTypes;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationLockedException;
-use GamingEngine\Core\Configuration\Models\Configuration;
 use GamingEngine\Core\Tests\TestCase;
 
 class ConfigurationTest extends TestCase

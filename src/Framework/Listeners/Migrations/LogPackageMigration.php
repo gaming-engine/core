@@ -2,8 +2,8 @@
 
 namespace GamingEngine\Core\Framework\Listeners\Migrations;
 
+use GamingEngine\Core\Framework\Entities\FrameworkMigration;
 use GamingEngine\Core\Framework\Migrations\IGamingEngineMigration;
-use GamingEngine\Core\Framework\Models\FrameworkMigration;
 use Illuminate\Database\Events\MigrationEnded;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Support\Facades\Schema;
