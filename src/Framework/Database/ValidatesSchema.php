@@ -2,7 +2,7 @@
 
 namespace GamingEngine\Core\Framework\Database;
 
-interface DatabaseSchema
+interface ValidatesSchema
 {
     public function hasTable(string $table): bool;
 }

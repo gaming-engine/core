@@ -4,8 +4,8 @@ namespace GamingEngine\Core;
 
 use GamingEngine\Core\Configuration\Application\ApplicationConfiguration;
 use GamingEngine\Core\Configuration\Application\LaravelConfiguration;
-use GamingEngine\Core\Framework\Database\DatabaseSchema;
 use GamingEngine\Core\Framework\Database\Schema;
+use GamingEngine\Core\Framework\Database\ValidatesSchema;
 use GamingEngine\Core\Framework\Environment\Environment;
 use GamingEngine\Core\Framework\Environment\EnvironmentFactory;
 use GamingEngine\Core\Framework\Http\View\Components\LogoComponent;
@@ -40,6 +40,60 @@ class CoreServiceProvider extends PackageServiceProvider
         $this->publishLanguages();
     }
 
+    public function publishLanguages()
+    {
+        $this->loadTranslationsFrom(
+            __DIR__ . '/../resources/lang',
+            'gaming-engine:core'
+        );
+    }
+
+    public function registeringPackage()
+    {
+        $this->app->singleton(
+            ApplicationConfiguration::class,
+            fn () => new LaravelConfiguration(config('app'))
+        );
+
+        $this->app->singleton(
+            Environment::class,
+            function () {
+                /**
+                 * @var EnvironmentFactory $factory
+                 */
+                $factory = app(EnvironmentFactory::class);
+
+                return $factory->build();
+            }
+        );
+
+        $this->app->singleton(
+            ValidatesSchema::class,
+            fn () => new Schema()
+        );
+
+        $this->app->singleton(
+            ModuleCollection::class,
+            fn () => new CachedModuleCollection(
+                new CoreModuleCollection()
+            )
+        );
+    }
+
+    public function packageBooted()
+    {
+        /**
+         * @var $core Core
+         */
+        $core = app(Core::class);
+
+        $core->registerPackage(app(CoreModule::class));
+
+        if ($core->installed()) {
+            View::composer('*', ConfigurationViewComposer::class);
+        }
+    }
+
     private function publishAssets(): void
     {
         $environment = $this->environment();
@@ -72,59 +126,5 @@ class CoreServiceProvider extends PackageServiceProvider
         $this->publishes([
             __DIR__ . '/../database/seeders/CoreDatabaseSeeder.php' => database_path('seeders/CoreDatabaseSeeder.php'),
         ], 'gaming-engine:core-seeders');
-    }
-
-    public function publishLanguages()
-    {
-        $this->loadTranslationsFrom(
-            __DIR__ . '/../resources/lang',
-            'gaming-engine:core'
-        );
-    }
-
-    public function registeringPackage()
-    {
-        $this->app->singleton(
-            ApplicationConfiguration::class,
-            fn () => new LaravelConfiguration(config('app'))
-        );
-
-        $this->app->singleton(
-            Environment::class,
-            function () {
-                /**
-                 * @var EnvironmentFactory $factory
-                 */
-                $factory = app(EnvironmentFactory::class);
-
-                return $factory->build();
-            }
-        );
-
-        $this->app->singleton(
-            DatabaseSchema::class,
-            fn () => new Schema()
-        );
-
-        $this->app->singleton(
-            ModuleCollection::class,
-            fn () => new CachedModuleCollection(
-                new CoreModuleCollection()
-            )
-        );
-    }
-
-    public function packageBooted()
-    {
-        /**
-         * @var $core Core
-         */
-        $core = app(Core::class);
-
-        $core->registerPackage(app(CoreModule::class));
-
-        if ($core->installed()) {
-            View::composer('*', ConfigurationViewComposer::class);
-        }
     }
 }

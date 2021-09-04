@@ -20,7 +20,8 @@
         "gaming-engine/dictionary": "dev-main",
         "gaming-engine/string-tools": "dev-main",
         "illuminate/contracts": "^8.37",
-        "spatie/laravel-package-tools": "^1.4.3"
+        "spatie/laravel-package-tools": "^1.4.3",
+        "ext-pdo": "*"
     },
     "require-dev": {
         "brianium/paratest": "^6.2",

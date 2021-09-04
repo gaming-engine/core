@@ -2,15 +2,15 @@
 
 namespace GamingEngine\Core\Framework\Installation;
 
-use GamingEngine\Core\Framework\Database\DatabaseSchema;
+use GamingEngine\Core\Framework\Database\ValidatesSchema;
 use GamingEngine\Core\Framework\Entities\FrameworkModule;
 use Illuminate\Database\QueryException;
 
 class CoreInstallationVerification implements InstallationVerification
 {
-    private DatabaseSchema $schema;
+    private ValidatesSchema $schema;
 
-    public function __construct(DatabaseSchema $schema)
+    public function __construct(ValidatesSchema $schema)
     {
         $this->schema = $schema;
     }
