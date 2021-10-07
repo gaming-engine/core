@@ -17,8 +17,8 @@
     ],
     "require": {
         "php": "^8.0|^8.1",
-        "gaming-engine/dictionary": "dev-main",
-        "gaming-engine/string-tools": "dev-main",
+        "gaming-engine/dictionary": "1.*",
+        "gaming-engine/string-tools": "1.*",
         "illuminate/contracts": "^8.37",
         "spatie/laravel-package-tools": "^1.4.3",
         "ext-pdo": "*"
