@@ -2,15 +2,15 @@
 
 namespace GamingEngine\Core\Account\Entities;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User;
+use Illuminate\Foundation\Auth\User as BaseUser;
 use Illuminate\Support\Facades\Hash;
 
-class CoreUser extends User
+class User extends BaseUser
 {
     use SoftDeletes;
-
-    protected $table = 'users';
+    use HasFactory;
 
     protected $guarded = [];
 

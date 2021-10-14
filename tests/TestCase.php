@@ -2,10 +2,11 @@
 
 namespace GamingEngine\Core\Tests;
 
+use GamingEngine\Core\Account\Providers\UserServiceProvider;
+use GamingEngine\Core\Configuration\Providers\ConfigurationServiceProvider;
 use GamingEngine\Core\CoreServiceProvider;
 use GamingEngine\Core\Database\Seeders\AccountConfigurationKeySeeder;
 use GamingEngine\Core\Database\Seeders\SiteConfigurationKeySeeder;
-use GamingEngine\Core\Framework\Providers\ConfigurationServiceProvider;
 use GamingEngine\Core\Framework\Providers\EventServiceProvider;
 use GamingEngine\Core\Framework\Providers\RouteServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -53,6 +54,7 @@ class TestCase extends Orchestra
             EventServiceProvider::class,
             RouteServiceProvider::class,
             ConfigurationServiceProvider::class,
+            UserServiceProvider::class,
         ];
     }
 }

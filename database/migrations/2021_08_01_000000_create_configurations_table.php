@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends CoreMigration {
     public function up()
     {
+        if (Schema::hasTable('configurations')) {
+            return;
+        }
+
         Schema::create('configurations', function (Blueprint $table) {
             $table->bigIncrements('id');
 

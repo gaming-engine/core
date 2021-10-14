@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Schema;
 return new class extends CoreMigration {
     public function up()
     {
+        if (Schema::hasTable('framework_migrations')) {
+            return;
+        }
+
         Schema::create('framework_migrations', function (Blueprint $table) {
             $table->id();
 
