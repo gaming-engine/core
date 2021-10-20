@@ -118,7 +118,7 @@ class CoreServiceProvider extends PackageServiceProvider
     {
         $this->publishes([
             __DIR__ . '/../database/migrations/' => database_path('migrations'),
-        ], 'migrations');
+        ], 'gaming-engine:core-migrations');
     }
 
     private function publishSeeders()
