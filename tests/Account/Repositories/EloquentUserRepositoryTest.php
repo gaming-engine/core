@@ -5,6 +5,7 @@ namespace GamingEngine\Core\Tests\Account\Repositories;
 use GamingEngine\Core\Account\DataTransfer\UserDTO;
 use GamingEngine\Core\Account\Entities\User;
 use GamingEngine\Core\Account\Events\User\UserCreated;
+use GamingEngine\Core\Account\Exceptions\DuplicateEmailException;
 use GamingEngine\Core\Account\Repositories\EloquentUserRepository;
 use GamingEngine\Core\Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -75,7 +76,32 @@ class EloquentUserRepositoryTest extends TestCase
     /**
      * @test
      */
-    public function eloquent_user_repository_firs_an_event_when_the_user_is_created()
+    public function eloquent_user_repository_throws_an_exception_if_a_duplicate_user_is_provided()
+    {
+        // Arrange
+        $details = new UserDTO([
+            'name' => $this->faker->name,
+            'email' => $email = $this->faker->email,
+            'password' => $this->faker->password,
+        ]);
+        $repository = app(EloquentUserRepository::class);
+
+        User::factory()->create([
+            'email' => $email,
+        ]);
+
+        $this->expectException(DuplicateEmailException::class);
+
+        // Act
+        $repository->create($details);
+
+        // Assert
+    }
+
+    /**
+     * @test
+     */
+    public function eloquent_user_repository_fires_an_event_when_the_user_is_created()
     {
         // Arrange
         Event::fake();
