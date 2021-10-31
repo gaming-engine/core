@@ -18,7 +18,8 @@ class CoreInstallationVerification implements InstallationVerification
     public function installed(): bool
     {
         try {
-            return $this->schema->hasTable((new FrameworkModule())->getTable());
+            return config('gaming-engine-core.installed')
+                && $this->schema->hasTable((new FrameworkModule())->getTable());
         } catch (QueryException $exception) {
             return false;
         }

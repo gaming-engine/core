@@ -1,0 +1,16 @@
+<?php
+
+namespace Database\Seeders;
+
+use Illuminate\Database\Seeder;
+use GamingEngine\Core\Database\Seeders\AccountConfigurationKeySeeder;
+use GamingEngine\Core\Database\Seeders\SiteConfigurationKeySeeder;
+
+class CoreDatabaseSeeder extends Seeder
+{
+    public function run()
+    {
+        $this->call(AccountConfigurationKeySeeder::class);
+        $this->call(SiteConfigurationKeySeeder::class);
+    }
+}

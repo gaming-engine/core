@@ -8,13 +8,8 @@ use Illuminate\View\View;
 
 class ConfigurationViewComposer
 {
-    private AccountConfiguration $accountConfiguration;
-    private SiteConfiguration $siteConfiguration;
-
-    public function __construct(AccountConfiguration $accountConfiguration, SiteConfiguration $siteConfiguration)
+    public function __construct(private AccountConfiguration $accountConfiguration, private SiteConfiguration $siteConfiguration)
     {
-        $this->accountConfiguration = $accountConfiguration;
-        $this->siteConfiguration = $siteConfiguration;
     }
 
     public function compose(View $view)

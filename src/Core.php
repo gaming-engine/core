@@ -10,13 +10,8 @@ use GamingEngine\Core\Framework\Module\ModuleCollection;
 
 class Core
 {
-    private ModuleCollection $moduleCollection;
-    private CoreInstallationVerification $verification;
-
-    public function __construct(ModuleCollection $moduleCollection, CoreInstallationVerification $verification)
+    public function __construct(private ModuleCollection $moduleCollection, private CoreInstallationVerification $verification)
     {
-        $this->moduleCollection = $moduleCollection;
-        $this->verification = $verification;
     }
 
     public function registerPackage(Module $module): void

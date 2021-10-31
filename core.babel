@@ -33,6 +33,14 @@
                                         <language>en-US</language>
                                         <approved>false</approved>
                                     </translation>
+                                    <translation>
+                                        <language>fr-FR</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                    <translation>
+                                        <language>es-ES</language>
+                                        <approved>false</approved>
+                                    </translation>
                                 </translations>
                             </concept_node>
                             <concept_node>
@@ -46,6 +54,14 @@
                                         <language>en-US</language>
                                         <approved>false</approved>
                                     </translation>
+                                    <translation>
+                                        <language>fr-FR</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                    <translation>
+                                        <language>es-ES</language>
+                                        <approved>false</approved>
+                                    </translation>
                                 </translations>
                             </concept_node>
                             <concept_node>
@@ -57,6 +73,14 @@
                                 <translations>
                                     <translation>
                                         <language>en-US</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                    <translation>
+                                        <language>fr-FR</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                    <translation>
+                                        <language>es-ES</language>
                                         <approved>false</approved>
                                     </translation>
                                 </translations>
@@ -83,6 +107,14 @@
                                         <language>en-US</language>
                                         <approved>false</approved>
                                     </translation>
+                                    <translation>
+                                        <language>fr-FR</language>
+                                        <approved>false</approved>
+                                    </translation>
+                                    <translation>
+                                        <language>es-ES</language>
+                                        <approved>false</approved>
+                                    </translation>
                                 </translations>
                             </concept_node>
                         </children>
@@ -99,10 +131,26 @@
             <source_id/>
             <source_file>resources/lang/en</source_file>
         </language>
+        <language>
+            <code>es-ES</code>
+            <source_id/>
+            <source_file>resources/lang/es</source_file>
+        </language>
+        <language>
+            <code>fr-FR</code>
+            <source_id/>
+            <source_file>resources/lang/fr</source_file>
+        </language>
     </languages>
     <translation_files>
         <translation_file>
             <file>resources/lang/en</file>
+        </translation_file>
+        <translation_file>
+            <file>resources/lang/fr</file>
+        </translation_file>
+        <translation_file>
+            <file>resources/lang/es</file>
         </translation_file>
     </translation_files>
     <editor_configuration>

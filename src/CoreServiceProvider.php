@@ -9,13 +9,11 @@ use GamingEngine\Core\Framework\Database\ValidatesSchema;
 use GamingEngine\Core\Framework\Environment\Environment;
 use GamingEngine\Core\Framework\Environment\EnvironmentFactory;
 use GamingEngine\Core\Framework\Http\View\Components\LogoComponent;
-use GamingEngine\Core\Framework\Http\View\Composers\ConfigurationViewComposer;
 use GamingEngine\Core\Framework\Module\CachedModuleCollection;
 use GamingEngine\Core\Framework\Module\CoreModule;
 use GamingEngine\Core\Framework\Module\CoreModuleCollection;
 use GamingEngine\Core\Framework\Module\ModuleCollection;
 use Illuminate\Support\Facades\Blade;
-use Illuminate\Support\Facades\View;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -88,10 +86,6 @@ class CoreServiceProvider extends PackageServiceProvider
         $core = app(Core::class);
 
         $core->registerPackage(app(CoreModule::class));
-
-        if ($core->installed()) {
-            View::composer('*', ConfigurationViewComposer::class);
-        }
     }
 
     private function publishAssets(): void
@@ -124,7 +118,7 @@ class CoreServiceProvider extends PackageServiceProvider
     private function publishSeeders()
     {
         $this->publishes([
-            __DIR__ . '/../database/seeders/CoreDatabaseSeeder.php' => database_path('seeders/CoreDatabaseSeeder.php'),
+            __DIR__ . '/../database/seeders/CoreDatabaseSeeder.stub' => database_path('seeders/CoreDatabaseSeeder.php'),
         ], 'gaming-engine:core-seeders');
     }
 }
