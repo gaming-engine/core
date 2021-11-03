@@ -25,7 +25,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        os: [ ubuntu-latest, windows-latest ]
+        os: [ ubuntu-latest ]
         php: [ 8.0 ]
         laravel: [ 8.* ]
         stability: [ prefer-lowest, prefer-stable ]
@@ -56,7 +56,7 @@ jobs:
           mysql --version
           sudo apt-get install -y mysql-client
           mysql --host 127.0.0.1 --port ${{ job.services.mysql.ports['3306'] }} -uuser -psecret -e "SHOW DATABASES"
-          
+
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.github', '.env');"
 
@@ -71,4 +71,9 @@ jobs:
         run: chmod -R 777 storage bootstrap/cache
 
       - name: Execute tests
+        env:
+          MYSQL_DATABASE: test_db
+          DB_USERNAME: user
+          DB_PASSWORD: secret
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: vendor/bin/phpunit
