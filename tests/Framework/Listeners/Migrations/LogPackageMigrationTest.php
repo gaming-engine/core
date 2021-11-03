@@ -37,7 +37,7 @@ class LogPackageMigrationTest extends TestCase
         ));
 
         // Assert
-        $this->assertDatabaseCount(FrameworkMigration::class, $initialCount);
+        $this->assertDatabaseCount((new FrameworkMigration)->getTable(), $initialCount);
     }
 
     /**
@@ -64,7 +64,7 @@ class LogPackageMigrationTest extends TestCase
         ));
 
         // Assert
-        $this->assertDatabaseHas(FrameworkMigration::class, [
+        $this->assertDatabaseHas((new FrameworkMigration)->getTable(), [
             'migration' => 'foo',
             'module_name' => 'bar',
         ]);

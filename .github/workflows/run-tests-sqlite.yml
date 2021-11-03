@@ -1,4 +1,4 @@
-name: run-tests
+name: run-tests-sqlite
 
 on:
   push:
@@ -9,10 +9,11 @@ on:
 jobs:
   test:
     runs-on: ${{ matrix.os }}
+
     strategy:
       fail-fast: true
       matrix:
-        os: [ ubuntu-latest, windows-latest ]
+        os: [ ubuntu-latest ]
         php: [ 8.0 ]
         laravel: [ 8.* ]
         stability: [ prefer-lowest, prefer-stable ]
@@ -44,4 +45,7 @@ jobs:
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Execute tests
+        env:
+          DB_CONNECTION: sqlite
+          DB_DATABASE: ":memory:"
         run: vendor/bin/phpunit
