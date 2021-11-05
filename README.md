@@ -23,7 +23,7 @@ This will include, and not be limited to:
 Making sure that the framework is working as anticipated is one of our main focuses. Because of this, we will do our
 best to make sure that the code is of the best quality possible. Because of that, the commitment to you, the user of it
 will be 95% test coverage of any features that are built into it (for all parts of the framework and not just this
-component). We will run all tests on MySQL, PostgreSQL and SQLite databases to ensure maximum flexibility.
+component). We will run all tests on MySQL, PostgresSQL and SQLite databases to ensure maximum flexibility.
 
 To run tests, you can run the following command:
 
