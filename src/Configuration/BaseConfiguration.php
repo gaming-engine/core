@@ -35,4 +35,6 @@ abstract class BaseConfiguration
                 }
             });
     }
+
+    abstract public static function type(): string;
 }

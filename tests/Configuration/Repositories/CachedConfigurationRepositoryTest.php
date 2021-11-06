@@ -94,4 +94,48 @@ class CachedConfigurationRepositoryTest extends TestCase
         // Assert
         $wrapped->shouldNotHaveReceived('site');
     }
+
+    /**
+     * @test
+     */
+    public function cached_configuration_delegates_update_to_the_wrapped_object()
+    {
+        // Arrange
+        $configuration = new SiteConfiguration(collect());
+        $wrapped = $this->mock(ConfigurationRepository::class);
+
+        $repository = new CachedConfigurationRepository($wrapped);
+
+        $wrapped->shouldReceive('update')
+            ->andReturn($configuration);
+
+        // Act
+        $repository->update($configuration);
+
+        // Assert
+    }
+
+    /**
+     * @test
+     */
+    public function cached_configuration_will_re_cache_the_data_on_update()
+    {
+        // Arrange
+        $configuration = new SiteConfiguration(collect());
+        $wrapped = $this->mock(ConfigurationRepository::class);
+
+        $repository = new CachedConfigurationRepository($wrapped);
+
+        Cache::shouldReceive('rememberForever')
+            ->withArgs(fn ($key, $c) => $configuration === $c())
+            ->andReturn($configuration);
+
+        $wrapped->shouldReceive('update')
+            ->andReturn($configuration);
+
+        // Act
+        $repository->update($configuration);
+
+        // Assert
+    }
 }

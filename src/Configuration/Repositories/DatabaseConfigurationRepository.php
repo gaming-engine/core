@@ -3,8 +3,8 @@
 namespace GamingEngine\Core\Configuration\Repositories;
 
 use GamingEngine\Core\Configuration\AccountConfiguration;
+use GamingEngine\Core\Configuration\BaseConfiguration;
 use GamingEngine\Core\Configuration\Entities\Configuration;
-use GamingEngine\Core\Configuration\Enumerations\ConfigurationCategoryTypes;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationPropertyException;
 use GamingEngine\Core\Configuration\Exceptions\ConfigurationValueException;
 use GamingEngine\Core\Configuration\SiteConfiguration;
@@ -18,7 +18,7 @@ class DatabaseConfigurationRepository implements ConfigurationRepository
     public function account(): AccountConfiguration
     {
         return new AccountConfiguration(
-            Configuration::category(ConfigurationCategoryTypes::ACCOUNT)
+            Configuration::category(AccountConfiguration::type())
                 ->get()
         );
     }
@@ -30,8 +30,27 @@ class DatabaseConfigurationRepository implements ConfigurationRepository
     public function site(): SiteConfiguration
     {
         return new SiteConfiguration(
-            Configuration::category(ConfigurationCategoryTypes::SITE)
+            Configuration::category(SiteConfiguration::type())
                 ->get()
         );
+    }
+
+    public function update(BaseConfiguration $configuration): BaseConfiguration
+    {
+        Configuration::category($configuration::type())
+            ->get()
+            ->each(function (Configuration $config) use ($configuration) {
+                $property = $config->property_name;
+
+                if ($config->value == $configuration->$property) {
+                    return;
+                }
+
+                $config->update([
+                    'value' => $configuration->$property,
+                ]);
+            });
+
+        return $configuration;
     }
 }
