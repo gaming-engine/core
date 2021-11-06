@@ -36,5 +36,22 @@ abstract class BaseConfiguration
             });
     }
 
+    public static function fromConfiguration(self $configuration, array $values): self
+    {
+        $class = $configuration::class;
+
+        return new $class(collect(
+            array_merge(
+                (array)$configuration,
+                $values
+            )
+        )->transform(function ($value, $key) {
+            return new ConfigurationModel([
+                'key' => $key,
+                'value' => $value,
+            ]);
+        }));
+    }
+
     abstract public static function type(): string;
 }

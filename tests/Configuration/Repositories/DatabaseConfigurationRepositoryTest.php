@@ -73,20 +73,11 @@ class DatabaseConfigurationRepositoryTest extends TestCase
         $subject = $this->app->get(DatabaseConfigurationRepository::class);
         $configuration = $subject->site();
 
-        $updated = new SiteConfiguration(
-            collect(
-                array_merge(
-                    (array)$configuration,
-                    [
-                        'name' => 'Hello',
-                    ]
-                )
-            )->transform(function ($value, $key) {
-                return new Configuration([
-                    'key' => $key,
-                    'value' => $value,
-                ]);
-            })
+        $updated = SiteConfiguration::fromConfiguration(
+            $configuration,
+            [
+                'name' => 'Hello',
+            ]
         );
 
         // Act
