@@ -2,6 +2,8 @@
 
 namespace GamingEngine\Core\Configuration;
 
+use GamingEngine\Core\Configuration\Enumerations\ConfigurationCategoryTypes;
+
 /**
  * @property-read bool $darkMode
  * @property-read string $defaultTheme
@@ -54,4 +56,9 @@ class SiteConfiguration extends BaseConfiguration
      * @var string
      */
     public string $logoUrl;
+
+    public static function type(): string
+    {
+        return ConfigurationCategoryTypes::SITE;
+    }
 }

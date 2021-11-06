@@ -2,6 +2,8 @@
 
 namespace GamingEngine\Core\Configuration;
 
+use GamingEngine\Core\Configuration\Enumerations\ConfigurationCategoryTypes;
+
 /**
  * @property-read bool $numberedAccounts
  * @property-read int $numberedAccountSeed
@@ -22,4 +24,9 @@ class AccountConfiguration extends BaseConfiguration
      * @var int
      */
     public int $numberedAccountSeed;
+
+    public static function type(): string
+    {
+        return ConfigurationCategoryTypes::ACCOUNT;
+    }
 }

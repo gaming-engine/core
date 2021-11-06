@@ -8,6 +8,7 @@ use GamingEngine\Core\Framework\Database\Schema;
 use GamingEngine\Core\Framework\Database\ValidatesSchema;
 use GamingEngine\Core\Framework\Environment\Environment;
 use GamingEngine\Core\Framework\Environment\EnvironmentFactory;
+use GamingEngine\Core\Framework\Http\View\Components\LayoutComponent;
 use GamingEngine\Core\Framework\Http\View\Components\LogoComponent;
 use GamingEngine\Core\Framework\Module\CachedModuleCollection;
 use GamingEngine\Core\Framework\Module\CoreModule;
@@ -26,6 +27,7 @@ class CoreServiceProvider extends PackageServiceProvider
             ->hasConfigFile('gaming-engine-core')
             ->hasViews();
 
+        Blade::component('ge:c-layout', LayoutComponent::class);
         Blade::component('ge:c-logo', LogoComponent::class);
 
         $this->loadMigrationsFrom([

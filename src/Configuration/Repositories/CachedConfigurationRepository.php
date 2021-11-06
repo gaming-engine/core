@@ -3,7 +3,7 @@
 namespace GamingEngine\Core\Configuration\Repositories;
 
 use GamingEngine\Core\Configuration\AccountConfiguration;
-use GamingEngine\Core\Configuration\Enumerations\ConfigurationCategoryTypes;
+use GamingEngine\Core\Configuration\BaseConfiguration;
 use GamingEngine\Core\Configuration\SiteConfiguration;
 use GamingEngine\StringTools\StringHelper;
 use Illuminate\Support\Facades\Cache;
@@ -21,7 +21,7 @@ class CachedConfigurationRepository implements ConfigurationRepository
     public function account(): AccountConfiguration
     {
         return $this->cache(
-            ConfigurationCategoryTypes::ACCOUNT,
+            AccountConfiguration::type(),
             fn () => $this->configurationRepository->account()
         );
     }
@@ -29,7 +29,7 @@ class CachedConfigurationRepository implements ConfigurationRepository
     public function site(): SiteConfiguration
     {
         return $this->cache(
-            ConfigurationCategoryTypes::SITE,
+            SiteConfiguration::type(),
             fn () => $this->configurationRepository->site()
         );
     }
@@ -44,6 +44,14 @@ class CachedConfigurationRepository implements ConfigurationRepository
                 ]
             ),
             $values
+        );
+    }
+
+    public function update(BaseConfiguration $configuration): BaseConfiguration
+    {
+        return $this->cache(
+            $configuration::type(),
+            fn () => $this->configurationRepository->update($configuration)
         );
     }
 }

@@ -84,4 +84,9 @@ class BaseConfigurationTest extends TestCase
 class SampleConfiguration extends BaseConfiguration
 {
     public int $test;
+
+    public static function type(): string
+    {
+        return 'testing';
+    }
 }
