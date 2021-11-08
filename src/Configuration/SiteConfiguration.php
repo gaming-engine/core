@@ -57,6 +57,13 @@ class SiteConfiguration extends BaseConfiguration
      */
     public string $logoUrl;
 
+    /**
+     * What is the default locale for the site?
+     *
+     * @var string
+     */
+    public string $locale;
+
     public static function type(): string
     {
         return ConfigurationCategoryTypes::SITE;
