@@ -126,7 +126,7 @@ class CachedConfigurationRepositoryTest extends TestCase
 
         $repository = new CachedConfigurationRepository($wrapped);
 
-        Cache::shouldReceive('rememberForever')
+        Cache::shouldReceive('put')
             ->withArgs(fn ($key, $c) => $configuration === $c())
             ->andReturn($configuration);
 
@@ -134,8 +134,9 @@ class CachedConfigurationRepositoryTest extends TestCase
             ->andReturn($configuration);
 
         // Act
-        $repository->update($configuration);
+        $response = $repository->update($configuration);
 
         // Assert
+        $this->assertEquals($configuration, $response);
     }
 }
