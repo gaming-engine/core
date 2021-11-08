@@ -37,21 +37,30 @@ class CachedConfigurationRepository implements ConfigurationRepository
     private function cache(string $category, callable $values)
     {
         return Cache::rememberForever(
-            StringHelper::template(
-                self::CACHE_KEY,
-                [
-                    'category' => $category,
-                ]
-            ),
+            $this->cacheKey($category),
             $values
+        );
+    }
+
+    private function cacheKey(string $category): string
+    {
+        return StringHelper::template(
+            self::CACHE_KEY,
+            [
+                'category' => $category,
+            ]
         );
     }
 
     public function update(BaseConfiguration $configuration): BaseConfiguration
     {
-        return $this->cache(
-            $configuration::type(),
-            fn () => $this->configurationRepository->update($configuration)
+        $response = $this->configurationRepository->update($configuration);
+
+        Cache::put(
+            $this->cacheKey($configuration::type()),
+            fn () => $response,
         );
+
+        return $response;
     }
 }
