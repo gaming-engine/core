@@ -41,6 +41,10 @@ class SiteConfigurationKeySeeder extends Seeder
                 'type' => ConfigurationValueTypes::STRING,
                 'value' => '/images/framework/logo.svg',
             ],
+            'locale' => [
+                'type' => ConfigurationValueTypes::STRING,
+                'value' => 'en',
+            ],
         ];
 
         foreach ($keys as $key => $value) {
