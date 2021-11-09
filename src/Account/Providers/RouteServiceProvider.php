@@ -1,8 +1,7 @@
 <?php
 
-namespace GamingEngine\Core\Framework\Providers;
+namespace GamingEngine\Core\Account\Providers;
 
-use GamingEngine\Core\Framework\Http\Controllers\InstallationRequiredController;
 use GamingEngine\Core\Framework\Http\Middleware\InstallationStatusMiddleware;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
@@ -19,9 +18,6 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->middleware(InstallationStatusMiddleware::class)
                 ->group(__DIR__ . '/../Routes/web.php');
-
-            Route::get('/installation', InstallationRequiredController::class)
-                ->name('installation-required');
         });
     }
 }
