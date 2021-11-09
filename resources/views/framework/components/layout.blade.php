@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="{{ mix('css/framework/gaming-engine.css') }}" rel="stylesheet">
+    <link href="{{ mix('/public/css/gaming-engine.css', 'modules/framework') }}" rel="stylesheet">
 </head>
 <body class="antialiased font-body bg-body text-body">
 <div class="relative bg-gray-50 overflow-hidden">
@@ -44,16 +44,13 @@
             <nav class="relative flex items-center justify-between sm:h-10 md:justify-center">
                 <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                     <div class="flex items-center justify-between w-full md:w-auto">
-                        <a href="#" aria-label="Home">
-                            @if(!$siteConfiguration->logoUrl)
-                                <x-ge:c-logo/>
-                            @elseif
-                                <img
-                                    src="{{ $siteConfiguration->logoUrl }}"
-                                    alt="{{ $siteConfiguration->name }}"
-                                    title="{{ $siteConfiguration->name }}"
-                                />
-                            @endif
+                        <a href="{{ route('home') }}" aria-label="Home">
+                            <img
+                                class="w-auto h-14"
+                                src="{{ $siteConfiguration->logoUrl }}"
+                                alt="{{ $siteConfiguration->name }}"
+                                title="{{ $siteConfiguration->name }}"
+                            />
                         </a>
                         <div class="-mr-2 flex items-center md:hidden">
                             <button
@@ -79,7 +76,7 @@
                 <div class="hidden md:absolute md:flex md:items-center md:justify-end md:inset-y-0 md:right-0">
                     <span class="inline-flex rounded-md shadow"><a
                             class="inline-flex items-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-indigo-600 bg-white hover:text-indigo-500 focus:outline-none focus:border-indigo-300 focus:shadow-outline-indigo active:bg-gray-50 active:text-indigo-700 transition duration-150 ease-in-out"
-                            href="#">Log in</a></span>
+                            href="{{ route('login') }}">Log in</a></span>
                 </div>
             </nav>
         </div>

@@ -1,3 +1,3 @@
-<ge:c-layout>
+<x-ge:c-layout>
 
-</ge:c-layout>
+</x-ge:c-layout>
