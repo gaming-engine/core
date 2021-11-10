@@ -49,12 +49,7 @@
                 <div class="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                     <div class="flex items-center justify-between w-full md:w-auto">
                         <a href="{{ route('home') }}" aria-label="Home">
-                            <img
-                                class="w-auto h-14"
-                                src="{{ $siteConfiguration->logoUrl }}"
-                                alt="{{ $siteConfiguration->name }}"
-                                title="{{ $siteConfiguration->name }}"
-                            />
+                            <x-ge:c-logo/>
                         </a>
                         <div class="-mr-2 flex items-center md:hidden">
                             <button
@@ -119,9 +114,7 @@
                 </div>
             </div>
         </div>
-        <main class="mt-10 mx-auto max-w-screen-xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 xl:mt-28">
-            {{ $slot }}
-        </main>
+        {{ $slot }}
     </div>
 </div>
 </body>
