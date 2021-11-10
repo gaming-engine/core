@@ -1,7 +1,7 @@
 <?php
 
-use GamingEngine\Core\Framework\Http\Controllers\HomeController;
+use GamingEngine\Core\Account\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('login', HomeController::class)
+Route::get('login', [LoginController::class, 'index'])
     ->name('login');

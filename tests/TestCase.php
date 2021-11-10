@@ -2,13 +2,14 @@
 
 namespace GamingEngine\Core\Tests;
 
+use GamingEngine\Core\Account\Providers\RouteServiceProvider as AccountRouteServiceProvider;
 use GamingEngine\Core\Account\Providers\UserServiceProvider;
 use GamingEngine\Core\Configuration\Providers\ConfigurationServiceProvider;
 use GamingEngine\Core\CoreServiceProvider;
 use GamingEngine\Core\Database\Seeders\AccountConfigurationKeySeeder;
 use GamingEngine\Core\Database\Seeders\SiteConfigurationKeySeeder;
 use GamingEngine\Core\Framework\Providers\EventServiceProvider;
-use GamingEngine\Core\Framework\Providers\RouteServiceProvider;
+use GamingEngine\Core\Framework\Providers\RouteServiceProvider as CoreRouteServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 use Orchestra\Testbench\TestCase as Orchestra;
@@ -52,9 +53,10 @@ class TestCase extends Orchestra
         return [
             CoreServiceProvider::class,
             EventServiceProvider::class,
-            RouteServiceProvider::class,
+            CoreRouteServiceProvider::class,
             ConfigurationServiceProvider::class,
             UserServiceProvider::class,
+            AccountRouteServiceProvider::class,
         ];
     }
 }

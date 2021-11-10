@@ -13,6 +13,8 @@ class HomeControllerTest extends TestCase
     public function home_controller_you_are_able_to_see_the_homepage()
     {
         // Arrange
+        $this->withoutMix();
+
         $installationStatus = $this->mock(Core::class);
         $installationStatus->shouldReceive('installed')
             ->andReturnTrue();
