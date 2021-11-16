@@ -15,8 +15,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->name('api.v1.')
                 ->group(__DIR__ . '/../Routes/api.php');
 
-            Route::middleware('web')
-                ->middleware(InstallationStatusMiddleware::class)
+            Route::middleware(['web', InstallationStatusMiddleware::class])
                 ->group(__DIR__ . '/../Routes/web.php');
         });
     }
