@@ -7,6 +7,7 @@ use GamingEngine\Core\Configuration\Repositories\CachedConfigurationRepository;
 use GamingEngine\Core\Configuration\Repositories\ConfigurationRepository;
 use GamingEngine\Core\Configuration\Repositories\DatabaseConfigurationRepository;
 use GamingEngine\Core\Configuration\SiteConfiguration;
+use GamingEngine\Core\Core;
 use GamingEngine\Core\Framework\Http\View\Composers\ConfigurationViewComposer;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
@@ -47,6 +48,15 @@ class ConfigurationServiceProvider extends ServiceProvider
 
     public function boot()
     {
+        /**
+         * @var Core $core
+         */
+        $core = app(Core::class);
+
+        if (! $core->installed()) {
+            return;
+        }
+
         View::composer('*', ConfigurationViewComposer::class);
     }
 }

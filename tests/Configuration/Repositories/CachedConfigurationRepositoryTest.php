@@ -127,7 +127,7 @@ class CachedConfigurationRepositoryTest extends TestCase
         $repository = new CachedConfigurationRepository($wrapped);
 
         Cache::shouldReceive('put')
-            ->withArgs(fn ($key, $c) => $configuration === $c())
+            ->withArgs(fn ($key, $c) => $configuration === $c)
             ->andReturn($configuration);
 
         $wrapped->shouldReceive('update')
