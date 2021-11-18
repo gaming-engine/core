@@ -1,5 +1,5 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-./vendor/bin/phpunit --coverage-html ./build
+XDEBUG_MODE=coverage ./vendor/bin/phpunit --coverage-html ./build
 php coverage-checker.php ./build/clover.xml 95
