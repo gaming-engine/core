@@ -26,14 +26,6 @@ class CachedConfigurationRepository implements ConfigurationRepository
         );
     }
 
-    public function site(): SiteConfiguration
-    {
-        return $this->cache(
-            SiteConfiguration::type(),
-            fn () => $this->configurationRepository->site()
-        );
-    }
-
     private function cache(string $category, callable $values)
     {
         return Cache::rememberForever(
@@ -52,13 +44,21 @@ class CachedConfigurationRepository implements ConfigurationRepository
         );
     }
 
+    public function site(): SiteConfiguration
+    {
+        return $this->cache(
+            SiteConfiguration::type(),
+            fn () => $this->configurationRepository->site()
+        );
+    }
+
     public function update(BaseConfiguration $configuration): BaseConfiguration
     {
         $response = $this->configurationRepository->update($configuration);
 
         Cache::put(
             $this->cacheKey($configuration::type()),
-            fn () => $response,
+            $response,
         );
 
         return $response;
