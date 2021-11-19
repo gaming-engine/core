@@ -16,6 +16,7 @@ module.exports = {
     'prettier',
   ],
   rules: {
+    'import/no-unresolved': 'off',
     'max-len': [
       'error',
       {

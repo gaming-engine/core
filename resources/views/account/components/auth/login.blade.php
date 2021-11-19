@@ -12,36 +12,21 @@
             <v-form action="{{ route('login') }}" method="POST">
                 @csrf
                 <div>
-                    <label class="block text-sm font-medium leading-5 text-gray-700" for="email">
-                        {{ __('gaming-engine:core::authentication.login.email.label') }}
-                    </label>
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input
-                            class="
-                            appearance-none
-                            block
-                            w-full
-                            px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400
-                            focus:outline-none focus:shadow-outline-blue focus:border-blue-300
-                            transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                            id="email" type="email" required=""
-                            placeholder="{{ __('gaming-engine:core::authentication.login.email.placeholder') }}"
-                            disabled
-                        />
-                    </div>
+                    <input-field
+                        :required="true"
+                        placeholder="{{ __('gaming-engine:core::authentication.login.email.placeholder') }}"
+                        label="{{ __('gaming-engine:core::authentication.login.email.label') }}"
+                        type="email"
+                        name="email"
+                        id="email"></input-field>
                 </div>
                 <div class="mt-6">
-                    <label class="block text-sm font-medium leading-5 text-gray-700"
-                           for="password">
-                        {{ __('gaming-engine:core::authentication.login.password.label') }}
-                    </label>
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-                            id="password" type="password" required=""
-                            placeholder="{{ __('gaming-engine:core::authentication.login.password.placeholder') }}"
-                        />
-                    </div>
+                    <password-field
+                        :required="true"
+                        placeholder="{{ __('gaming-engine:core::authentication.login.password.placeholder') }}"
+                        label="{{ __('gaming-engine:core::authentication.login.password.label') }}"
+                        name="password"
+                        id="password"></password-field>
                 </div>
                 <div class="mt-6 flex items-center justify-between">
                     <div class="flex items-center">
@@ -59,6 +44,7 @@
                 </div>
                 <div class="mt-6">
                     <span class="block w-full rounded-md shadow-sm">
+                        <form-button></form-button>
                         <button
                             class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
                             type="submit"

@@ -35,7 +35,8 @@ mix.options({
     resolve: {
       symlinks: false,
       alias: {
-        '@': path.resolve(__dirname, 'resources/js/'),
+        '@mixins': path.resolve(__dirname, 'resources/js/mixins'),
+        '@components': path.resolve(__dirname, 'resources/js/components'),
       },
     },
   });
