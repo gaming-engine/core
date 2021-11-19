@@ -28,12 +28,14 @@
     },
     "homepage": "https://gitlab.com/gaming-engine/core#readme",
     "devDependencies": {
+        "@commitlint/cli": "^12.1.4",
+        "@commitlint/config-conventional": "^12.1.4",
         "autoprefixer": "^10.3.1",
-        "axios": "^0.21.1",
         "eslint": "^7.30.0",
         "eslint-config-airbnb-base": "^14.2.1",
-        "eslint-plugin-import": "^2.23.4",
-        "eslint-plugin-vue": "^7.12.1",
+        "eslint-plugin-import": "^2.24.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-vue": "^7.16.0",
         "husky": "^7.0.0",
         "laravel-mix": "^6.0.6",
         "lint-staged": "^11.0.0",
@@ -42,6 +44,7 @@
         "moment-timezone": "^0.5.21",
         "postcss": "^8.3.6",
         "prettier": "^2.3.2",
+        "prettier-eslint-cli": "^5.0.1",
         "tailwindcss": "^2.2.7",
         "@tailwindcss/aspect-ratio": "^0.2.0",
         "@tailwindcss/forms": "^0.2.1",
@@ -49,11 +52,10 @@
         "@vue/compiler-sfc": "^3.2.8",
         "@vue/test-utils": "^2.0.0-rc.13",
         "vue-loader": "^16.5.0",
-        "vue3-jest": "^27.0.0-alpha.1",
-        "@commitlint/cli": "^12.1.4",
-        "@commitlint/config-conventional": "^12.1.4"
+        "vue3-jest": "^27.0.0-alpha.1"
     },
     "dependencies": {
-        "vue": "^3.2.2"
+        "vue": "^3.2.2",
+        "axios": "^0.21.1"
     }
 }
