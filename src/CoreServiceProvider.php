@@ -45,7 +45,7 @@ class CoreServiceProvider extends PackageServiceProvider
         $environment = $this->environment();
 
         $this->publishes([
-            __DIR__ . "/../dist/$environment/" => 'public/modules/framework',
+            __DIR__ . "/../dist/$environment/" => 'public/modules/framework/',
             __DIR__ . '/../resources/images' => 'public/images/framework/',
         ], 'gaming-engine:core-resources');
     }
