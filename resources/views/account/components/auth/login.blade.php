@@ -17,9 +17,16 @@
                     </label>
                     <div class="mt-1 rounded-md shadow-sm">
                         <input
-                            class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                            class="
+                            appearance-none
+                            block
+                            w-full
+                            px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400
+                            focus:outline-none focus:shadow-outline-blue focus:border-blue-300
+                            transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                             id="email" type="email" required=""
                             placeholder="{{ __('gaming-engine:core::authentication.login.email.placeholder') }}"
+                            disabled
                         />
                     </div>
                 </div>
