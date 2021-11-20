@@ -12,6 +12,7 @@ use GamingEngine\Core\Framework\Providers\EventServiceProvider;
 use GamingEngine\Core\Framework\Providers\RouteServiceProvider as CoreRouteServiceProvider;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use Laravel\Fortify\FortifyServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 class TestCase extends Orchestra
@@ -57,6 +58,7 @@ class TestCase extends Orchestra
             ConfigurationServiceProvider::class,
             UserServiceProvider::class,
             AccountRouteServiceProvider::class,
+            FortifyServiceProvider::class,
         ];
     }
 }

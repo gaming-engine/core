@@ -56,11 +56,11 @@ class EloquentUserRepositoryTest extends TestCase
     public function eloquent_user_repository_creates_a_user()
     {
         // Arrange
-        $details = new UserDTO([
-            'name' => $this->faker->name,
-            'email' => $this->faker->email,
-            'password' => $this->faker->password,
-        ]);
+        $details = new UserDTO(
+            name: $this->faker->name,
+            email: $email = $this->faker->email,
+            password: $this->faker->password,
+        );
         $repository = app(EloquentUserRepository::class);
 
         // Act
@@ -79,11 +79,11 @@ class EloquentUserRepositoryTest extends TestCase
     public function eloquent_user_repository_throws_an_exception_if_a_duplicate_user_is_provided()
     {
         // Arrange
-        $details = new UserDTO([
-            'name' => $this->faker->name,
-            'email' => $email = $this->faker->email,
-            'password' => $this->faker->password,
-        ]);
+        $details = new UserDTO(
+            name: $this->faker->name,
+            email: $email = $this->faker->email,
+            password: $this->faker->password,
+        );
         $repository = app(EloquentUserRepository::class);
 
         User::factory()->create([
@@ -105,11 +105,11 @@ class EloquentUserRepositoryTest extends TestCase
     {
         // Arrange
         Event::fake();
-        $details = new UserDTO([
-            'name' => $this->faker->name,
-            'email' => $this->faker->email,
-            'password' => $this->faker->password,
-        ]);
+        $details = new UserDTO(
+            name: $this->faker->name,
+            email: $email = $this->faker->email,
+            password: $this->faker->password,
+        );
         $repository = app(EloquentUserRepository::class);
 
         // Act
