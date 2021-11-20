@@ -23,7 +23,7 @@
                 }"
                 :disabled="disabled"
                 :name="name ?? id"
-                :placeholder="label"
+                :placeholder="placeholder || label"
                 :required="required"
                 :type="type"
                 class="
@@ -82,13 +82,14 @@
                 </svg>
             </div>
         </div>
+
+        <progress-bar :colour="passwordColour" :percentage="passwordPercentage"/>
     </div>
 </template>
 
 <script>
 export default {
   name: 'password-field',
-
   props: {
     id: {
       required: true,
@@ -117,6 +118,11 @@ export default {
       required: true,
       type: String,
     },
+    placeholder: {
+      required: false,
+      type: String,
+      default: undefined,
+    },
     modelValue: {
       required: false,
       type: String,
@@ -137,6 +143,54 @@ export default {
   computed: {
     type() {
       return this.showPassword ? 'text' : 'password';
+    },
+
+    passwordScore() {
+      let score = 0;
+      const pass = this.value;
+      if (!pass) {
+        return score;
+      }
+
+      // award every unique letter until 5 repetitions
+      const letters = {};
+      for (let i = 0; i < pass.length; i++) {
+        letters[pass[i]] = (letters[pass[i]] || 0) + 1;
+        score += 5.0 / letters[pass[i]];
+      }
+
+      // bonus points for mixing it up
+      const variations = {
+        digits: /\d/.test(pass),
+        lower: /[a-z]/.test(pass),
+        upper: /[A-Z]/.test(pass),
+        nonWords: /\W/.test(pass),
+      };
+
+      let variationCount = 0;
+
+      Object.keys(variations)
+        .forEach((check) => {
+          variationCount += (true === variations[check]) ? 1 : 0;
+        });
+
+      score += (variationCount - 1) * 10;
+
+      return parseInt(score, 10);
+    },
+
+    passwordPercentage() {
+      return Math.min((this.passwordScore / 100) * 100, 100);
+    },
+
+    passwordColour() {
+      const percentage = this.passwordPercentage;
+
+      if (80 < percentage) {
+        return 'green';
+      }
+
+      return 'red';
     },
   },
 
