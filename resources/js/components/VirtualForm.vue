@@ -1,5 +1,5 @@
 <template>
-    <form ref="form" :action="action" :method="method" @submit.prevent="submit">
+    <form ref="form" :action="action" :method="method">
         <slot></slot>
 
         <span ref="spinner" class="hidden">
@@ -90,10 +90,7 @@ export default {
 
     submit() {
       this.disableForm();
-
-      setTimeout(() => {
-        this.enableForm();
-      }, 1000);
+      return true;
     },
   },
 

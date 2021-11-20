@@ -22,6 +22,7 @@
                 'cursor-not-allowed': disabled
             }"
                 :disabled="disabled"
+                :name="name ?? id"
                 :placeholder="placeholder ?? label"
                 :type="type"
                 class="
@@ -57,6 +58,10 @@ export default {
   props: {
     id: {
       required: true,
+      type: String,
+    },
+    name: {
+      required: false,
       type: String,
     },
     type: {
