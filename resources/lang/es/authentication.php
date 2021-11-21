@@ -1,5 +1,6 @@
 <?php
 return [
+    "forgot-password" => ["action" => "", "details" => "", "title" => ""],
     "login" => [
         "action" => "Firme en el registro",
         "email" => ["label" => "Dirección de correo electrónico", "placeholder" => "user@site.com"],
