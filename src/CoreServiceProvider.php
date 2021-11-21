@@ -8,6 +8,10 @@ use GamingEngine\Core\Framework\Database\Schema;
 use GamingEngine\Core\Framework\Database\ValidatesSchema;
 use GamingEngine\Core\Framework\Environment\Environment;
 use GamingEngine\Core\Framework\Environment\EnvironmentFactory;
+use GamingEngine\Core\Framework\Http\View\Components\Alerts\AlertComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Alerts\ErrorAlertComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Alerts\InformationAlertComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Alerts\SuccessAlertComponent;
 use GamingEngine\Core\Framework\Http\View\Components\LayoutComponent;
 use GamingEngine\Core\Framework\Http\View\Components\LogoComponent;
 use GamingEngine\Core\Framework\Http\View\Components\NotificationComponent;
@@ -31,6 +35,12 @@ class CoreServiceProvider extends PackageServiceProvider
         Blade::component(LayoutComponent::class, 'layout', 'ge:c');
         Blade::component(LogoComponent::class, 'logo', 'ge:c');
         Blade::component(NotificationComponent::class, 'notifications', 'ge:c');
+
+        Blade::component(AlertComponent::class, 'alert', 'ge:c');
+        Blade::component(ErrorAlertComponent::class, 'error-alert', 'ge:c');
+        Blade::component(SuccessAlertComponent::class, 'success-alert', 'ge:c');
+        Blade::component(InformationAlertComponent::class, 'information-alert', 'ge:c');
+
 
         $this->loadMigrationsFrom([
             'database/migrations',

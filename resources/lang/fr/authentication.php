@@ -1,5 +1,6 @@
 <?php
 return [
+    "forgot-password" => ["action" => "", "details" => "", "title" => ""],
     "login" => [
         "action" => "S'identifier",
         "email" => ["label" => "Adresse électronique", "placeholder" => "user@site.com"],
