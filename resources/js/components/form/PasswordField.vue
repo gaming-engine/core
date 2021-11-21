@@ -83,7 +83,11 @@
             </div>
         </div>
 
-        <progress-bar :colour="passwordColour" :percentage="passwordPercentage"/>
+        <progress-bar
+            v-if="showIndicator"
+            :colour="passwordColour"
+            :percentage="passwordPercentage"
+        />
     </div>
 </template>
 
@@ -129,6 +133,11 @@ export default {
       default: undefined,
     },
     required: {
+      required: false,
+      type: Boolean,
+      default: false,
+    },
+    showIndicator: {
       required: false,
       type: Boolean,
       default: false,

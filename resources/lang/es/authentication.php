@@ -1,21 +1,24 @@
 <?php
 return [
     "login" => [
-        "action" => "",
-        "email" => ["label" => "", "placeholder" => ""],
-        "forgot" => "",
-        "password" => ["label" => "", "placeholder" => ""],
-        "remember" => ["label" => ""],
-        "title" => "",
+        "action" => "Firme en el registro",
+        "email" => ["label" => "Dirección de correo electrónico", "placeholder" => "user@site.com"],
+        "forgot" => "¿Olvidó su contraseña?",
+        "password" => ["label" => "Contraseña", "placeholder" => ""],
+        "remember" => ["label" => "Recuérdame."],
+        "title" => "Volver a la aventura",
     ],
     "register" => [
-        "action" => "",
-        "email" => ["label" => "", "placeholder" => ""],
-        "login" => "",
-        "name" => ["label" => "", "placeholder" => ""],
-        "password" => ["label" => "", "placeholder" => ""],
-        "password-confirmation" => ["label" => "", "placeholder" => ""],
-        "remember" => ["label" => ""],
-        "title" => "",
+        "action" => "¡Apúntame!",
+        "email" => ["label" => "Dirección de correo electrónico", "placeholder" => "user@site.com"],
+        "login" => "¿Ya tiene una cuenta?",
+        "name" => [
+            "label" => "Nombre de usuario",
+            "placeholder" => "¿Cómo le gustaría ser conocido?",
+        ],
+        "password" => ["label" => "Contraseña", "placeholder" => ""],
+        "password-confirmation" => ["label" => "confirme la contraseña", "placeholder" => "Confirme su contraseña"],
+        "remember" => ["label" => "Recuérdame."],
+        "title" => "¡Únete a la aventura hoy mismo!",
     ],
 ];

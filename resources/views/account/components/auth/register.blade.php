@@ -8,6 +8,24 @@
         </h2>
     </div>
     <div class="mt-8">
+        @if (session('status'))
+            <div>
+                {{ session('status') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div>
+                <div>{{ __('Whoops! Something went wrong.') }}</div>
+
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
         <div class="mt-6">
             <v-form action="{{ route('login') }}" method="POST">
                 @csrf
@@ -32,6 +50,7 @@
                 <div class="mt-6">
                     <password-field
                         :required="true"
+                        :show-indicator="true"
                         placeholder="{{ __('gaming-engine:core::authentication.register.password.placeholder') }}"
                         label="{{ __('gaming-engine:core::authentication.register.password.label') }}"
                         name="password"
@@ -40,17 +59,20 @@
                 <div class="mt-6">
                     <password-field
                         :required="true"
+                        :show-indicator="true"
                         placeholder="{{ __('gaming-engine:core::authentication.register.password-confirmation.placeholder') }}"
                         label="{{ __('gaming-engine:core::authentication.register.password-confirmation.label') }}"
                         name="password-confirmed"
                         id="password-confirmed"></password-field>
                 </div>
                 <div class="mt-6 flex items-center justify-between">
-                    <div class="text-sm leading-5"><a
+                    <div class="text-sm leading-5">
+                        <a
                             class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
                             href="{{ route('login') }}">
                             {{ __('gaming-engine:core::authentication.register.login') }}
-                        </a></div>
+                        </a>
+                    </div>
                 </div>
                 <div class="mt-6">
                     <span class="block w-full rounded-md shadow-sm">

@@ -7,6 +7,9 @@
             {{ __('gaming-engine:core::authentication.login.title') }}
         </h2>
     </div>
+
+    <x-ge:c-notifications/>
+
     <div class="mt-8">
         <div class="mt-6">
             <v-form action="{{ route('login') }}" method="POST">
@@ -26,6 +29,7 @@
                         placeholder="{{ __('gaming-engine:core::authentication.login.password.placeholder') }}"
                         label="{{ __('gaming-engine:core::authentication.login.password.label') }}"
                         name="password"
+                        :show-indicator="false"
                         id="password"></password-field>
                 </div>
                 <div class="mt-6 flex items-center justify-between">

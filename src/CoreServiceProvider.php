@@ -10,6 +10,7 @@ use GamingEngine\Core\Framework\Environment\Environment;
 use GamingEngine\Core\Framework\Environment\EnvironmentFactory;
 use GamingEngine\Core\Framework\Http\View\Components\LayoutComponent;
 use GamingEngine\Core\Framework\Http\View\Components\LogoComponent;
+use GamingEngine\Core\Framework\Http\View\Components\NotificationComponent;
 use GamingEngine\Core\Framework\Module\CachedModuleCollection;
 use GamingEngine\Core\Framework\Module\CoreModule;
 use GamingEngine\Core\Framework\Module\CoreModuleCollection;
@@ -29,6 +30,7 @@ class CoreServiceProvider extends PackageServiceProvider
 
         Blade::component(LayoutComponent::class, 'layout', 'ge:c');
         Blade::component(LogoComponent::class, 'logo', 'ge:c');
+        Blade::component(NotificationComponent::class, 'notifications', 'ge:c');
 
         $this->loadMigrationsFrom([
             'database/migrations',

@@ -26,7 +26,9 @@ class UserServiceProvider extends ServiceProvider
 
         Blade::component(AuthLayoutComponent::class, 'layout', 'ge:c:a');
 
-        Fortify::loginView('gaming-engine:core::account.login');
+        Fortify::loginView(function () {
+            return view('gaming-engine:core::account.login');
+        });
         Fortify::registerView('gaming-engine:core::account.register');
         Fortify::createUsersUsing(CreateNewUser::class);
     }
