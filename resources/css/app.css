@@ -2,3 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+img.invert {
+    filter: invert() sepia(1) saturate(5) hue-rotate(175deg);
+}

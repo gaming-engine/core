@@ -1,6 +1,6 @@
 <?php
 
-namespace GamingEngine\Core\Framework\Http\View\Components;
+namespace GamingEngine\Core\Framework\Http\View\Components\Layouts;
 
 use GamingEngine\Core\Configuration\SiteConfiguration;
 use Illuminate\View\Component;
@@ -8,7 +8,7 @@ use Illuminate\View\Component;
 /**
  * @property-read SiteConfiguration $siteConfiguration
  */
-class LayoutComponent extends Component
+class SplashLayoutComponent extends Component
 {
     public SiteConfiguration $siteConfiguration;
 
@@ -20,7 +20,7 @@ class LayoutComponent extends Component
     public function render()
     {
         return view(
-            'gaming-engine:core::framework.components.layout',
+            'gaming-engine:core::framework.components.layouts.splash',
             [
                 'siteConfiguration' => $this->siteConfiguration,
             ]
