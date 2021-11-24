@@ -14,7 +14,7 @@
 
             <div class="mt-8">
                 <div class="mt-6">
-                    <x-ge:c-information-alert>
+                    <x-ge:c-information-alert class="mb-4">
                         {{ __('gaming-engine:core::authentication.forgot-password.details') }}
                     </x-ge:c-information-alert>
 
@@ -39,14 +39,14 @@
                             </div>
                         </div>
                         <div class="mt-6">
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button
-                            class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
-                            type="submit"
-                        >
-                            {{ __('gaming-engine:core::authentication.forgot-password.action') }}
-                        </button>
-                    </span>
+                        <span class="block w-full rounded-md shadow-sm">
+                            <button
+                                class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
+                                type="submit"
+                            >
+                                {{ __('gaming-engine:core::authentication.forgot-password.action') }}
+                            </button>
+                        </span>
                         </div>
                     </v-form>
                 </div>
