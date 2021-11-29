@@ -13,6 +13,7 @@ use GamingEngine\Core\Framework\Http\View\Components\Alerts\ErrorAlertComponent;
 use GamingEngine\Core\Framework\Http\View\Components\Alerts\InformationAlertComponent;
 use GamingEngine\Core\Framework\Http\View\Components\Alerts\SuccessAlertComponent;
 use GamingEngine\Core\Framework\Http\View\Components\Layouts\LayoutComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Layouts\SocialNetworksComponent;
 use GamingEngine\Core\Framework\Http\View\Components\Layouts\SplashLayoutComponent;
 use GamingEngine\Core\Framework\Http\View\Components\LogoComponent;
 use GamingEngine\Core\Framework\Http\View\Components\NotificationComponent;
@@ -37,6 +38,8 @@ class CoreServiceProvider extends PackageServiceProvider
         Blade::component(SplashLayoutComponent::class, 'layout', 'ge:c');
         Blade::component(LogoComponent::class, 'logo', 'ge:c');
         Blade::component(NotificationComponent::class, 'notifications', 'ge:c');
+        Blade::component(SocialNetworksComponent::class, 'social-networks', 'ge:c');
+
 
         Blade::component(AlertComponent::class, 'alert', 'ge:c');
         Blade::component(ErrorAlertComponent::class, 'error-alert', 'ge:c');
