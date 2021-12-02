@@ -30,6 +30,7 @@ mix.options({
   .postCss('resources/css/app.css', 'public/css/gaming-engine.css', [
     require('tailwindcss'),
   ])
+  .extract()
   .version()
   .webpackConfig({
     resolve: {

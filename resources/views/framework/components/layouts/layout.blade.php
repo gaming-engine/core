@@ -13,7 +13,7 @@
     <link href="{{ mix('/public/css/gaming-engine.css', 'modules/framework') }}" rel="stylesheet">
 </head>
 <body class="antialiased font-body bg-body text-body">
-<div class="h-screen flex overflow-hidden bg-gray-100">
+<div id="app" is="layout" class="h-screen flex overflow-hidden bg-gray-100">
     <div class="hidden">
         <div class="fixed inset-0 flex z-40">
             <div class="fixed inset-0">
