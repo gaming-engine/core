@@ -5,6 +5,7 @@ import InputField from '@components/form/InputField.vue'
 import PasswordField from '@components/form/PasswordField.vue'
 import FormButton from '@components/form/FormButton.vue'
 import ProgressBar from '@components/ProgressBar.vue'
+import Layout from '@components/Layout.vue'
 
 const app = createApp({})
 app.component('v-form', VirtualForm)
@@ -14,5 +15,6 @@ app.component('input-field', InputField)
 app.component('password-field', PasswordField)
 app.component('form-button', FormButton)
 app.component('progress-bar', ProgressBar)
+app.component('layout', Layout)
 
 app.mount('#app')
