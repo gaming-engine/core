@@ -1,5 +1,7 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+export PHP_CS_FIXER_IGNORE_ENV=1
+
 npx lint-staged
 git add -A .

@@ -1,5 +1,4 @@
 const mix = require('laravel-mix');
-const webpack = require('webpack');
 const path = require('path');
 
 /*
@@ -16,27 +15,29 @@ const path = require('path');
 const environment = mix.inProduction() ? 'prod' : 'local';
 
 mix.options({
-        terser: {
-            terserOptions: {
-                compress: {
-                    drop_console: true,
-                },
-            },
-        },
-    })
-    .setPublicPath(`dist/${environment}`)
-    .js('resources/js/app.js', 'public/js')
-    .vue()
-    .postCss('resources/css/app.css', 'public/css/gaming-engine.css', [
-        require('tailwindcss'),
-    ])
-    .version()
-    .webpackConfig({
-        resolve: {
-            symlinks: false,
-            alias: {
-                '@': path.resolve(__dirname, 'resources/js/'),
-            },
-        },
-        plugins: [new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)],
-    });
+  terser: {
+    terserOptions: {
+      compress: {
+        drop_console: true,
+      },
+    },
+  },
+})
+  .extract()
+  .setPublicPath(`dist/${environment}`)
+  .js('resources/js/app.js', 'public/js')
+  .vue({
+    version: 3,
+  })
+  .postCss('resources/css/app.css', 'public/css/gaming-engine.css', [
+    require('tailwindcss'),
+  ])
+  .version()
+  .webpackConfig({
+    resolve: {
+      symlinks: false,
+      alias: {
+        '@': path.resolve(__dirname, 'resources/js/'),
+      },
+    },
+  });
