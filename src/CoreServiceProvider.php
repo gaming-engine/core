@@ -8,8 +8,15 @@ use GamingEngine\Core\Framework\Database\Schema;
 use GamingEngine\Core\Framework\Database\ValidatesSchema;
 use GamingEngine\Core\Framework\Environment\Environment;
 use GamingEngine\Core\Framework\Environment\EnvironmentFactory;
-use GamingEngine\Core\Framework\Http\View\Components\LayoutComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Alerts\AlertComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Alerts\ErrorAlertComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Alerts\InformationAlertComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Alerts\SuccessAlertComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Layouts\LayoutComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Layouts\SocialNetworksComponent;
+use GamingEngine\Core\Framework\Http\View\Components\Layouts\SplashLayoutComponent;
 use GamingEngine\Core\Framework\Http\View\Components\LogoComponent;
+use GamingEngine\Core\Framework\Http\View\Components\NotificationComponent;
 use GamingEngine\Core\Framework\Module\CachedModuleCollection;
 use GamingEngine\Core\Framework\Module\CoreModule;
 use GamingEngine\Core\Framework\Module\CoreModuleCollection;
@@ -27,8 +34,18 @@ class CoreServiceProvider extends PackageServiceProvider
             ->hasConfigFile('gaming-engine-core')
             ->hasViews();
 
-        Blade::component('ge:c-layout', LayoutComponent::class);
-        Blade::component('ge:c-logo', LogoComponent::class);
+        Blade::component(LayoutComponent::class, 'layout', 'ge:c');
+        Blade::component(SplashLayoutComponent::class, 'layout', 'ge:c');
+        Blade::component(LogoComponent::class, 'logo', 'ge:c');
+        Blade::component(NotificationComponent::class, 'notifications', 'ge:c');
+        Blade::component(SocialNetworksComponent::class, 'social-networks', 'ge:c');
+
+
+        Blade::component(AlertComponent::class, 'alert', 'ge:c');
+        Blade::component(ErrorAlertComponent::class, 'error-alert', 'ge:c');
+        Blade::component(SuccessAlertComponent::class, 'success-alert', 'ge:c');
+        Blade::component(InformationAlertComponent::class, 'information-alert', 'ge:c');
+
 
         $this->loadMigrationsFrom([
             'database/migrations',
@@ -38,6 +55,39 @@ class CoreServiceProvider extends PackageServiceProvider
         $this->publishMigrations();
         $this->publishSeeders();
         $this->publishLanguages();
+    }
+
+    private function publishAssets(): void
+    {
+        $environment = $this->environment();
+
+        $this->publishes([
+            __DIR__ . "/../dist/$environment/" => 'public/modules/framework/',
+            __DIR__ . '/../resources/images' => 'public/images/framework/',
+        ], 'gaming-engine:core-resources');
+    }
+
+    private function environment(): string
+    {
+        /**
+         * @var Environment
+         */
+        return $this->app->get(Environment::class)
+            ->name();
+    }
+
+    private function publishMigrations()
+    {
+        $this->publishes([
+            __DIR__ . '/../database/migrations/' => database_path('migrations'),
+        ], 'gaming-engine:core-migrations');
+    }
+
+    private function publishSeeders()
+    {
+        $this->publishes([
+            __DIR__ . '/../database/seeders/CoreDatabaseSeeder.stub' => database_path('seeders/CoreDatabaseSeeder.php'),
+        ], 'gaming-engine:core-seeders');
     }
 
     public function publishLanguages()
@@ -88,39 +138,5 @@ class CoreServiceProvider extends PackageServiceProvider
         $core = app(Core::class);
 
         $core->registerPackage(app(CoreModule::class));
-    }
-
-    private function publishAssets(): void
-    {
-        $environment = $this->environment();
-
-        $this->publishes([
-            __DIR__ . "/../dist/$environment/public/js/" => 'public/js/framework/',
-            __DIR__ . "/../dist/$environment/public/css/" => 'public/css/framework/',
-            __DIR__ . '/../resources/images' => 'public/images/framework/',
-        ], 'gaming-engine:core-resources');
-    }
-
-    private function environment(): string
-    {
-        /**
-         * @var Environment
-         */
-        return $this->app->get(Environment::class)
-            ->name();
-    }
-
-    private function publishMigrations()
-    {
-        $this->publishes([
-            __DIR__ . '/../database/migrations/' => database_path('migrations'),
-        ], 'gaming-engine:core-migrations');
-    }
-
-    private function publishSeeders()
-    {
-        $this->publishes([
-            __DIR__ . '/../database/seeders/CoreDatabaseSeeder.stub' => database_path('seeders/CoreDatabaseSeeder.php'),
-        ], 'gaming-engine:core-seeders');
     }
 }

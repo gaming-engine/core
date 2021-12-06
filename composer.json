@@ -21,6 +21,7 @@
         "gaming-engine/dictionary": "1.*",
         "gaming-engine/string-tools": "1.*",
         "illuminate/contracts": "^8.37",
+        "laravel/fortify": "^1.8",
         "spatie/data-transfer-object": "^3.7",
         "spatie/laravel-package-tools": "^1.4.3"
     },
@@ -67,7 +68,8 @@
                 "GamingEngine\\Core\\Framework\\Providers\\EventServiceProvider",
                 "GamingEngine\\Core\\Framework\\Providers\\RouteServiceProvider",
                 "GamingEngine\\Core\\Configuration\\Providers\\ConfigurationServiceProvider",
-                "GamingEngine\\Core\\Account\\Providers\\UserServiceProvider"
+                "GamingEngine\\Core\\Account\\Providers\\UserServiceProvider",
+                "GamingEngine\\Core\\Account\\Providers\\RouteServiceProvider"
             ],
             "aliases": {
                 "Core": "GamingEngine\\Core\\CoreFacade"

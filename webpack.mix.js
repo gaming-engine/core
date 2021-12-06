@@ -32,12 +32,14 @@ mix.options({
   .postCss('resources/css/app.css', 'public/css/gaming-engine.css', [
     require('tailwindcss'),
   ])
+  .extract()
   .version()
   .webpackConfig({
     resolve: {
       symlinks: false,
       alias: {
-        '@': path.resolve(__dirname, 'resources/js/'),
+        '@mixins': path.resolve(__dirname, 'resources/js/mixins'),
+        '@components': path.resolve(__dirname, 'resources/js/components'),
       },
     },
   });
